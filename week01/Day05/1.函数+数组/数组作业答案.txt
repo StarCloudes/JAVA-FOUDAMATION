@@ -1,0 +1,164 @@
+public class TestDemo {
+
+	public static void main(String[] args) {
+
+		
+		
+
+		// 1.定义一个数组,数组成员10个,找出数组中最大数连同下标一起输出
+		/*
+		 * int[] array = new int[10]; InputArray(array); OutputArray(array);
+		 * MaxAndMan_i(array);
+		 */
+
+		// 2.B哥去参加青年歌手大奖赛,有10个评委打分,(去掉一个最高一个最低)求平均分?
+		/*
+		 * int[] array = new int[10]; InputArray(array); OutputArray(array);
+		 * AvgSingScore(array);
+		 */
+
+		// 3.给定一个整型数组，数组成员10个,求该数组中第二大的数的下标
+		/*
+		int[] array = new int[10];
+		InputArray(array);
+		OutputArray(array);
+		SecondMax(array);
+      */
+		
+
+	 
+		
+		
+		
+		
+		
+	
+  		
+		
+		
+		
+		
+	}
+
+	/**
+	 * 数组输入数据
+	 * 
+	 * @param array
+	 *            传入的数组
+	 */
+	public static void InputArray(int array[]) {
+		for (int i = 0; i < array.length; i++) {
+			array[i] = new Random().nextInt(100);
+		}
+	}
+   /**
+    * 自定义数组打印 [模仿toString()]
+    * @param array
+    */
+	public static void OutputArray(int array[]) {
+		System.out.print("[");
+		for (int i = 0; i < array.length; i++) {
+			if (i == array.length - 1) {
+				System.out.print(array[i]);
+			} else {
+				System.out.print(array[i] + ",");
+			}
+		}
+		System.out.println("]");
+	}
+
+	/**
+	 * 寻找数组中最大的数和下标
+	 * 
+	 * @param array
+	 */
+	public static void MaxAndMan_i(int array[]) {
+		// 假设第一个元素最大
+		int max = array[0];
+		// 遍历数组寻找最大值
+//增强for循环,构成   for(元素:数组){循环体}
+		for (int i : array) {
+			if (i > max) {
+				max = i;
+			}
+		}
+		// 遍历数组寻找最大值的下标,这样做可以防止数组中用一样的最大值
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] == max) {
+				System.out.println("max_i = " + i);
+				System.out.println("max = " + max);
+			}
+
+		}
+	}
+
+	/**
+	 * 唱歌平均成绩
+	 * 
+	 * @param array
+	 *            存储歌唱成绩的数组
+	 */
+	public static void AvgSingScore(int array[]) {
+		int sum = 0;
+		// 假设最大值
+		int max = array[0];
+		// 假设最小值
+		int min = array[0];
+		// 遍历当前数组
+		for (int i = 0; i < array.length; i++) {
+			// 找最大值
+			if (array[i] > max) {
+				max = array[i];
+			}
+			// 找最小值
+			if (min > array[i]) {
+				min = array[i];
+			}
+			sum += array[i];
+
+		}
+		System.out.println("平均分:" + (double) ((sum - max - min)) / (double) ((array.length - 2)));
+
+	}
+    /**
+     * 找出数组中第二大的数
+     * @param array
+     */
+	public static void SecondMax(int array[]) {
+		// 定义两个变量存储最大和第二大的数
+		int max, maxtow;
+		/*
+		 * 思路: 假设数组中的第一个元素和第二个元素为第一和第二大, 然后用判断的方式找出这两个元素谁大谁小
+		 */
+		if (array[0] < array[1]) {// 给出max，maxtow初值
+
+			max = array[1];
+			maxtow = array[0];
+		} else {
+			max = array[0];
+			maxtow = array[1];
+		}
+		// 循环判断maxtow的最终值
+		for (int i = 2; i < array.length;i++) {
+			if (array[i] >= max) {
+				maxtow = max;
+				max = array[i];
+			} else if (array[i] > maxtow) {
+				maxtow = array[i];
+			}
+		}
+		// 确定并输出下标
+		for (int i = 0; i < array.length; i++) {
+
+			if (array[i] == maxtow) {
+				System.out.println("第二大的数的下标:" + i + " 数:" + array[i]);
+			}
+
+		}
+
+	}
+	
+
+	
+
+}
