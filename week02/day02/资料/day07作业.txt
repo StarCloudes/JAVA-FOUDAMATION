@@ -1,0 +1,185 @@
+
+
+1.需求：贵妇从宠物店购买了宠物狗、宠物猫，某天，家里举行聚会，向朋友介绍起自家豢(huan)养的宠物的情形。
+分析：
+  类：
+    贵妇类：
+        特征：名字
+        行为：购买宠物狗  
+                购买宠物猫 
+               举行聚会
+               介绍宠物狗 
+               介绍宠物猫
+         main:1, xxxx
+    宠物狗类：
+         特征：名字
+                   性别
+                   年龄
+                    品种
+           行为：看家 
+                 吃骨头
+
+   宠物猫类：
+         特征：名字
+                   性别
+                   年龄
+                    品种
+           行为：抓老鼠 
+                  吃鱼
+
+
+2、通过构造方法，初始化一个四开门白色宝马。
+分析：
+  汽车类：
+     特征：门数
+           颜色
+          
+------------------
+  宝马类：
+     特征：门数
+           颜色
+           品牌
+
+   测试类（用户类）：
+     场景：富二代开着宝马750，很自豪地向女友介绍起来，xxx
+
+
+
+3.西游记中，3个徒弟，共同的方法（吃斋，念佛，取经），孙悟空自己的方法（除妖），猪八戒自己的方法（牵马），沙和尚自己的方法（挑行李）
+class  ff
+{
+	ff()
+	{
+		System.out.print("吃斋"+"念佛"+"取经");
+     }
+}
+class Sun extends ff
+{
+	Sun(){
+		System.out.print("除妖");
+		}
+	
+}
+class Zhu extends ff
+{
+	Zhu(){System.out.print("牵马");}
+	
+}
+class Sha extends ff
+{
+	Sha(){System.out.print("挑行李");}
+	
+}
+class lx3
+{
+	public static void main(String[] args)
+	{
+		Sun sun=new Sun();
+		Zhu zhu=new Zhu();
+		Sha sha=new Sha();
+		
+	}
+}
+
+
+
+
+4.需求：公司中程序员有姓名，工号，薪水，工作内容。
+项目经理除了有姓名，工号，薪水，还有奖金，工作内容。
+对给出需求进行数据建模。
+public class Demo7 {
+	/*'
+	 *公司中的程序员有姓名,工号,薪水,工作内容
+	 *项目经理有姓名,工号,薪水,工作内容,奖金
+	 */
+	 public static void main(String[] args) {
+		 Programmer pro=new Programmer("张三","123",2344.55);
+		 pro.work();
+		 Manager manager=new Manager("李四","123334",2344.55,10000000);
+		 manager.work();
+	}
+}
+
+abstract class Worker
+{
+	private String name;
+	private String id;
+	private double salary;
+	Worker(){}
+	Worker(String name,String id,double salary)
+	{
+		this.name=name;
+		this.id=id;
+		this.salary=salary;
+	}
+	public abstract void work();
+}
+class Programmer extends Worker
+{
+	Programmer(){}
+	Programmer(String name,String id,double salary)
+	{
+		super(name,id,salary);
+	}
+	public void work()
+	{
+		System.out.println("写程序");
+	}
+}
+class Manager extends Worker
+{
+	private double bonus;
+	Manager(){}
+	Manager(String name,String id,double salary,double bonus)
+	{
+		super(name,id,salary);
+		this.bonus=bonus;
+	}
+	public void work()
+	{
+		System.out.println("管程序员");
+	}
+}
+
+5、电脑装配一显卡
+Computer：电脑中有一个属性，属性类型就是显卡（组合关系）
+
+	Geforce 显卡的子类
+
+	Ati    显卡的子类
+
+场景：程序员xxx去电脑专卖店购买了xx品牌的电脑，使用了一段时间之后（编程序、玩玩游戏、看看电影等等），嫌电脑原装的集成显卡不够给力，
+       就去电脑专卖店购买了Geforce 类型的独立显卡，并请店家安装上，使用了一段时间之后（编程序、玩玩游戏、看看电影等等）；听说ati类型的显卡
+       更好， 就去电脑专卖店购买了Ati 类型的独立显卡，并请店家安装上，使用了一段时间（编程序、玩玩游戏、看看电影等等）。
+
+分析：
+  类：
+    程序员类：（测试类）
+      特征：名字
+      行为：  购买电脑
+              使用电脑（编程序，玩游戏，看电影）
+              换Geforce 类型的独立显卡
+              换Ati 类型的独立显卡
+              main方法：xx
+    -----------------------------
+    电脑类：
+       特征：品牌
+                 售价
+                Geforce 类型独立显卡
+                Ati 类型独立显卡
+        行为：运行程序
+                  运行游戏
+                  播放视频
+
+   -----------------------------
+     Geforce 类型独立显卡类：
+        特征：品牌
+                  售价 
+                  分辨率
+        行为：渲染图形
+
+     Ati 类型独立显卡类：
+        特征：品牌
+                  售价 
+                  分辨率
+        行为：渲染图形
