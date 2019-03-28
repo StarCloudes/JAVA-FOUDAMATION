@@ -1,46 +1,56 @@
 package com.qianfeng.sort;
 
-class Car{
+class Car {
 	int doors;
 	String color;
-	
-}
 
-class BW extends Car{
-	static String brand = "BW";
-	
-    BW(int doors, String color) {
-		System.out.println("This is a " + doors+ " doors" + " "+ color+ " "+ this.brand +" car");
+	public Car() {
+
 	}
+
+	public Car(int doors, String color) {
+		this.doors = doors;
+		this.color = color;
+
+	}
+
 }
 
-class Person{
-	String name;
-	BW car1;
+class BW extends Car {
+	static String brand = "BW";
+
+	BW(int doors, String color) {
+        super(doors, color);
+		//System.out.println("This is a " + doors + " doors" + " " + color + " " + this.brand + " car");
+	}
 	
+}
+
+class Person {
+	String name;
+	BW c;
+
 	Person(String name) {
 		this.name = name;
 		System.out.println(name + " is a rich guy");
 	}
-	
-	void buyCar(int doors, String color) {
+
+	void buyCar(BW car1) {
+		this.c = car1;
 		System.out.println(this.name + " bought a car ");
-		car1 = new BW(doors,color);
+		System.out.println(this.c.color);
+		System.out.println("This is a " + this.c.doors + " doors" + " " + this.c.color + " " + this.c.brand + " car");
 	}
-	
+
 }
 
 public class homework02 {
-	
+
 	public static void main(String[] args) {
 		Person p = new Person("Steven");
-		//p.buyCar(4,"white");
-		
-		BW car = new BW(4,"white");
-		
-	
+		BW car1 = new BW(4, "white");
+		p.buyCar(car1);
+
 	}
-	
-	
 
 }

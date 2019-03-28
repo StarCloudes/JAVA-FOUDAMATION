@@ -5,7 +5,7 @@ public class homework03 {
 	 * ' 公司中的程序员有姓名,工号,薪水,工作内容 项目经理有姓名,工号,薪水,工作内容,奖金
 	 */
 	public static void main(String[] args) {
-		Programmer pro = new Programmer("张三", "123", 2344.55);
+		Programmers pro = new Programmers("张三", "123", 2344.55);
 		pro.work();
 		Manager manager = new Manager("李四", "123334", 2344.55, 10000000);
 		manager.work();
@@ -29,11 +29,11 @@ abstract class Worker {
 	public abstract void work();
 }
 
-class Programmer extends Worker {
-	Programmer() {
+class Programmers extends Worker {
+	Programmers() {
 	}
 
-	Programmer(String name, String id, double salary) {
+	Programmers(String name, String id, double salary) {
 		super(name, id, salary);
 	}
 
