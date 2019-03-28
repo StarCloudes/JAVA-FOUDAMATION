@@ -27,25 +27,24 @@ class Hardware{
 	}
 	
 	
-	
 }
 
 class Computer extends Hardware{
-	GraphCard graphCard;
+	private GraphCard graphCard;
 	
 	public Computer(String brand,int price) {
 		super(brand,price);
 	}
 	
-	public void application() {
+	public static void application() {
 		System.out.print("渲染图形、");
 	}
 	
-	public void playGame() {
+	public static void playGame() {
 		System.out.print("运行游戏、");
 	}
 	
-	public void playVedio() {
+	public static void playVedio() {
 		System.out.println("播放视频");
 	}
 	
@@ -74,7 +73,7 @@ class GraphCard extends Hardware{
 		this.solution = solution;
 	}
 	
-	public void render() {
+	public static void render() {
 		System.out.println("渲染");
 	}
 

@@ -38,7 +38,7 @@ class Person {
 	void buyCar(BW car1) {
 		this.c = car1;
 		System.out.println(this.name + " bought a car ");
-		System.out.println(this.c.color);
+		//System.out.println(this.c.color);
 		System.out.println("This is a " + this.c.doors + " doors" + " " + this.c.color + " " + this.c.brand + " car");
 	}
 

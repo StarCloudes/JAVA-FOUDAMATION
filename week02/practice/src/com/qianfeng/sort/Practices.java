@@ -64,6 +64,9 @@ public class Practices {
 		double distance = point1.countDistance(x1,y1,x2,y2);
 		//System.out.println("两点之间的距离：" + distance);
 		
+		int a = 10;
+	
+		
 	}
 	
 

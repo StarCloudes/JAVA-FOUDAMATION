@@ -1,0 +1,421 @@
+{\rtf1\ansi\ansicpg936\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset134 PingFangSC-Regular;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 1.\
+
+\f1 \'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb
+\f0 \
+interface A\{\}\
+\
+class B implements A\
+\{\
+	public String func()\
+	\{\
+		return "func";\
+	\}\
+\}\
+class Demo\
+\{\
+	public static void main(String[] args)\
+	\{\
+		A a=new B();//A
+\f1 \'d3\'d0\'b4\'ed\'ce\'f3\'a3\'ac\'bd\'d3\'bf\'da
+\f0 A
+\f1 \'d6\'d0\'c3\'bb\'d3\'d0\'b7\'bd\'b7\'a8
+\f0 \
+		System.out.println(a.func());\
+	\}\
+\}\
+\
+2\
+
+\f1 \'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb
+\f0 	\
+class Fu\
+\{\
+	boolean show(char a)\
+	\{\
+		System.out.println(a);\
+		return true;\
+	\}\
+\}\
+class Demo extends Fu\
+\{\
+	public static void main(String[] args)\
+	\{\
+		int i=0;\
+		Fu f=new Demo();\
+		Demo d=new Demo();\
+                 //
+\f1 \'ca\'d7\'cf\'c8\'c5\'d0\'b6\'cf\'c6\'f0\'ca\'bc\'cc\'f5\'bc\'fe
+\f0 ,
+\f1 \'d6\'b4\'d0\'d0\'c1\'cb\'d7\'d3\'c0\'e0\'b5\'c4
+\f0 show('A')   
+\f1 \'c8\'bb\'ba\'f3
+\f0 ,
+\f1 \'d6\'b4\'d0\'d0
+\f0   show('B')=false  
+\f1 \'cb\'f9\'d2\'d4\'cc\'f5\'bc\'fe\'b2\'bb\'b3\'c9\'c1\'a2
+\f0 ,
+\f1 \'d6\'b1\'bd\'d3\'bd\'e1\'ca\'f8\'d1\'ad\'bb\'b7
+\f0 \
+		for(f.show('A'); f.show('B')&&(i<2);f.show('C'))\
+		\{\
+			i++;\
+			d.show('D');\
+		\}	\
+	\}\
+	boolean show(char a)//
+\f1 \'d7\'d3\'c0\'e0\'d6\'d8\'d0\'b4\'c1\'cb\'b8\'b8\'c0\'e0\'b5\'c4\'b7\'bd\'b7\'a8\'a3\'ac\'d7\'ee\'ba\'f3\'d4\'cb\'d0\'d0\'b5\'c4\'ca\'c7\'d7\'d3\'c0\'e0\'b5\'c4\'b7\'bd\'b7\'a8
+\f0 \
+	\{\
+		System.out.println(a);\
+		return false;\
+	\}\
+\}\
+\
+\
+\
+A  B\
+====================================================================\
+3.\
+
+\f1 \'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb
+\f0 	\
+interface A\{\}\
+\
+class B implements A\
+\{\
+	public String test()\
+	\{\
+		return "yes";\
+	\}\
+\}\
+class Demo\
+\{\
+	static A get()\
+	\{\
+		return new B();\
+	\}\
+	public static void main(String[] args)\
+	\{\
+		A a=get();\
+		System.out.println(a.test());//test()
+\f1 \'ca\'c7
+\f0 B
+\f1 \'cc\'d8\'d3\'d0\'b7\'bd\'b7\'a8
+\f0 ,
+\f1 \'cb\'f9\'d2\'d4\'d2\'aa\'bd\'f8\'d0\'d0\'c7\'bf\'d6\'c6\'d7\'aa\'bb\'bb
+\f0  B b=(B) a;
+\f1 \'cd\'a8\'b9\'fd
+\f0 b.test()
+\f1 \'c0\'b4\'ca\'e4\'b3\'f6
+\f0 \
+	\}\
+\}\
+\
+\
+\
+====================================================================\
+4.\
+
+\f1 \'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb
+\f0 :   \
+class Super\
+\{\
+	int i=0;\
+	public Super(String a)\
+	\{\
+		System.out.println("A");\
+		i=1;	\
+	\}\
+	public Super()\
+	\{\
+		System.out.println("B");\
+		i+=2;\
+	\}\
+\}\
+class Demo extends Super\
+\{\
+	public Demo(String a)\
+	\{\
+		----------------------------------
+\f1 \'cf\'b5\'cd\'b3\'c4\'ac\'c8\'cf\'c1\'cb\'d2\'bb\'b8\'f6
+\f0 super
+\f1 \'a3\'a8\'a3\'a9\'a3\'ac\'bb\'e1\'cf\'c8\'d6\'b4\'d0\'d0\'b8\'b8\'c0\'e0\'b9\'b9\'d4\'ec\'ba\'af\'ca\'fd
+\f0 \
+		System.out.println("C");\
+		i=5;				\
+	\}\
+	public static void main(String[] args)\
+	\{\
+		int i=4;\
+		Super d=new Demo("A");\
+		System.out.println(d.i);\
+	\}\
+\}\
+\
+\
+B  C  5\
+\
+5.\
+
+\f1 \'d1\'a1\'d4\'f1\'cc\'e2\'a3\'ac\'d0\'b4\'b3\'f6\'b4\'ed\'ce\'f3\'b4\'f0\'b0\'b8\'b4\'ed\'ce\'f3\'b5\'c4\'d4\'ad\'d2\'f2\'a3\'ac\'d3\'c3\'b5\'a5\'d0\'d0\'d7\'a2\'ca\'cd\'b5\'c4\'b7\'bd\'ca\'bd\'a1\'a3
+\f0 \
+class Demo\
+\{\
+	
+\f1 \'a3\'a8
+\f0 public
+\f1 \'a3\'a9
+\f0  int show(int a,int b)\{return 0;\}\
+\}\
+
+\f1 \'cf\'c2\'c3\'e6\'c4\'c7\'d0\'a9\'ba\'af\'ca\'fd\'bf\'c9\'d2\'d4\'b4\'e6\'d4\'da\'d3\'da
+\f0 Demo
+\f1 \'b5\'c4\'d7\'d3\'c0\'e0\'d6\'d0\'a1\'a3
+\f0 	\
+A.public int show(int a,int b)\{return 0;\}//---\
+B.private int show(int a,int b)\{return 0;\}//---private
+\f1 \'c8\'a8\'cf\'de\'b5\'cd\'a3\'ac\'ce\'de\'b7\'a8\'b7\'c3\'ce\'ca\'b8\'b8\'c0\'e0\'d6\'d0\'b5\'c4\'cf\'e0\'cd\'ac\'b7\'bd\'b7\'a8\'ba\'af\'ca\'fd\'a3\'ac\'b2\'a2\'c7\'d2\'ca\'c7\'cb\'bd\'d3\'d0\'b5\'c4
+\f0 \
+C.private int show(int a,long b)\{return 0;\}//---\
+D.public short show(int a,int b)\{return 0;\}//---
+\f1 \'b7\'b5\'bb\'d8\'c0\'e0\'d0\'cd\'b2\'bb\'cd\'ac\'a3\'ac\'ce\'de\'b7\'a8\'b8\'b2\'b8\'c7\'a3\'ac\'b1\'d8\'d0\'eb\'ce\'aa\'cf\'e0\'cd\'ac\'ba\'af\'ca\'fd\'b2\'c5\'c4\'dc\'b8\'b2\'b8\'c7
+\f0 \
+E.static int show(int a,int b)\{return 0;\}//---
+\f1 \'be\'b2\'cc\'ac\'b5\'c4\'b2\'bb\'c4\'dc\'b8\'b2\'b8\'c7\'b7\'c7\'be\'b2\'cc\'ac\'b5\'c4\'a3\'ac\'be\'b2\'cc\'ac\'d6\'bb\'c4\'dc\'b8\'b2\'b8\'c7\'be\'b2\'cc\'ac\'b5\'c4
+\f0 \
+\
+\
+====================================================================\
+6.\
+
+\f1 \'d0\'b4\'b3\'f6
+\f0 this
+\f1 \'b9\'d8\'bc\'fc\'d7\'d6\'b5\'c4\'ba\'ac\'d2\'e5\'a3\'ac
+\f0 final
+\f1 \'d3\'d0\'c4\'c4\'d0\'a9\'cc\'d8\'b5\'e3\'a3\'bf
+\f0 \
+this
+\f1 \'a3\'ba\'b4\'fa\'b1\'ed\'b1\'be\'c0\'e0\'b6\'d4\'cf\'f3\'a3\'ac\'c4\'c4\'b8\'f6\'b6\'d4\'cf\'f3\'b5\'f7\'d3\'c3
+\f0 this
+\f1 \'cb\'f9\'d4\'da\'ba\'af\'ca\'fd\'a3\'ac
+\f0 this
+\f1 \'be\'cd\'b4\'fa\'b1\'ed\'c4\'c4\'b8\'f6\'b6\'d4\'cf\'f3\'a1\'a3
+\f0 \
+\
+final:\
+1,
+\f1 \'d0\'de\'ca\'ce\'c0\'e0\'a3\'ac\'b1\'e4\'c1\'bf
+\f0 (
+\f1 \'b3\'c9\'d4\'b1\'b1\'e4\'c1\'bf\'a3\'ac\'be\'b2\'cc\'ac\'b1\'e4\'c1\'bf\'a3\'ac\'be\'d6\'b2\'bf\'b1\'e4\'c1\'bf
+\f0 )
+\f1 \'a3\'ac\'ba\'af\'ca\'fd\'a1\'a3
+\f0 \
+2
+\f1 \'a3\'ac\'d0\'de\'ca\'ce\'b5\'c4\'c0\'e0\'b2\'bb\'bf\'c9\'d2\'d4\'b1\'bb\'bc\'cc\'b3\'d0\'a1\'a3
+\f0 \
+3
+\f1 \'a3\'ac\'d0\'de\'ca\'ce\'b5\'c4\'ba\'af\'ca\'fd\'b2\'bb\'bf\'c9\'d2\'d4\'b1\'bb\'b8\'b2\'b8\'c7\'a1\'a3
+\f0 \
+4
+\f1 \'a3\'ac\'d0\'de\'ca\'ce\'b5\'c4\'b1\'e4\'c1\'bf\'ca\'c7\'d2\'bb\'b8\'f6\'b3\'a3\'c1\'bf\'a3\'ac\'d6\'bb\'c4\'dc\'b8\'b3\'d6\'b5\'d2\'bb\'b4\'ce\'a1\'a3
+\f0 \
+\
+\
+\
+\
+\
+====================================================================\
+7.\
+
+\f1 \'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb\'a3\'ba
+\f0   \
+class Fu\
+\{\
+	int num=4;\
+	void show()\
+	\{\
+		System.out.println("showFu");\
+	\}\
+\}\
+class Zi extends Fu\
+\{\
+	int num=5;\
+	void show()\
+	\{\
+		System.out.println("showZi");\
+	\}\
+\}\
+class T\
+\{\
+	public static void main(String[] args)\
+	\{\
+		Fu f=new Zi();\
+		Zi z=new Zi();\
+		System.out.println(f.num); \
+		System.out.println(z.num); \
+		f.show();\
+		z.show(); \
+	\}\
+\}\
+\
+\
+4 5 showzi  showzi\
+\
+8.\
+interface A\
+\{\
+	void show();\
+\}\
+interface B\
+\{\
+	void add(int a,int b);\
+\}\
+class C implements A,B\
+\{\
+	//
+\f1 \'b3\'cc\'d0\'f2\'b4\'fa\'c2\'eb
+\f0 \
+	\
+	private int a,b;\
+	\
+	public void add(int a,int b)\
+	\{\
+		this.a =a;\
+		this.b = b;\
+\
+		\
+	\}\
+	public void show()\
+	\{\
+	   System.out.println(a+b);	\
+		\
+	\}\
+\
+\}\
+class D\
+\{\
+	public static void main(String[] args)\
+	\{\
+		C c=new C();\
+		c.add(4,2);\
+		c.show();//
+\f1 \'cd\'a8\'b9\'fd\'b8\'c3\'ba\'af\'ca\'fd\'b4\'f2\'d3\'a1\'d2\'d4\'c9\'cf\'c1\'bd\'b8\'f6\'ca\'fd\'b5\'c4\'ba\'cd\'a1\'a3
+\f0 6\
+	\}\
+\}\
+\
+\
+6\
+\
+9.\
+
+\f1 \'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb
+\f0 \
+class Super\
+\{\
+	int i=0;	\
+	public Super(String s)\
+	\{\
+		i=1;	\
+	\}\
+\}\
+class Demo extends Super\
+\{\
+	public Demo(String s)\
+	\{\
+		--------//
+\f1 \'d0\'e8\'d2\'aa\'bc\'d3\'d2\'bb\'b8\'f6
+\f0 Super(s);
+\f1 \'c8\'e7\'b9\'fb\'ce\'de\'b2\'ce\'ca\'fd\'cf\'b5\'cd\'b3\'c4\'ac\'c8\'cf\'bc\'d3\'d2\'bb\'b8\'f6
+\f0 Super()
+\f1 \'bf\'d5\'b2\'ce\'ca\'fd\'c0\'e0\'d0\'cd
+\f0 \
+		i=2;			\
+	\}\
+	public static void main(String[] args)\
+	\{\
+		Demo d=new Demo("yes");\
+		System.out.println(d.i);\
+	\}\
+\}\
+\
+\
+\
+2\
+====================================================================\
+10.\
+
+\f1 \'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb
+\f0 \
+class Super\
+\{\
+	public int get()\
+	\{return 4;\}\
+\}\
+class Demo15 extends Super\
+\{\
+      \
+	public long get()\{return 5;\}---
+\f1 \'b7\'b5\'bb\'d8\'c0\'e0\'d0\'cd\'b2\'bb\'d2\'bb\'d1\'f9\'b2\'bb\'c4\'dc\'cd\'ea\'b3\'c9\'b8\'b2\'b8\'c7\'a3\'ac\'bb\'e1\'b1\'a8\'b4\'ed
+\f0 	\
+		\
+	public static void main(String[] args)\
+	\{\
+		Super s=new Demo15();\
+		System.out.println(s.get());\
+	\}\
+\}\
+\
+\
+\
+\
+11.\
+
+\f1 \'b2\'b9\'d7\'e3
+\f0 compare
+\f1 \'ba\'af\'ca\'fd\'c4\'da\'b5\'c4\'b4\'fa\'c2\'eb\'a3\'ac\'b2\'bb\'d0\'ed\'cc\'ed\'bc\'d3\'c6\'e4\'cb\'fb\'ba\'af\'ca\'fd\'a1\'a3
+\f0 \
+class Circle\
+\{\
+	private static double pi=3.14;\
+	private double radius;\
+	public Circle(double r)\
+	\{\
+		radius=r;\
+	\}\
+	public static double compare(Circle[] cir)\
+	\{\
+		//
+\f1 \'b3\'cc\'d0\'f2\'b4\'fa\'c2\'eb
+\f0 //
+\f1 \'c6\'e4\'ca\'b5\'be\'cd\'ca\'c7\'d4\'da\'c7\'f3\'ca\'fd\'d7\'e9\'d6\'d0\'b5\'c4\'d7\'ee\'b4\'f3\'d6\'b5\'a1\'a3
+\f0 \
+		double temp = cir[0].radius >cir[1].radius ?  cir[0].radius:cir[1].radius;\
+		return  temp >cir[2].radius ?  temp:cir[2].radius;\
+		\
+	\}\
+\}\
+class TC\
+\{\
+	public static void main(String[] args)\
+	\{\
+		Circle cir[]=new Circle[3];//
+\f1 \'b4\'b4\'bd\'a8\'c1\'cb\'d2\'bb\'b8\'f6\'c0\'e0\'c0\'e0\'d0\'cd\'ca\'fd\'d7\'e9\'a1\'a3
+\f0 \
+		cir[0]=new Circle(1.0);\
+		cir[1]=new Circle(2.0);\
+		cir[2]=new Circle(4.0);\
+		System.out.println("
+\f1 \'d7\'ee\'b4\'f3\'b5\'c4\'b0\'eb\'be\'b6\'d6\'b5\'ca\'c7\'a3\'ba
+\f0 "+Circle.compare(cir));\
+	\}\
+\}
+\f1 \
+}
