@@ -1,0 +1,74 @@
+public class Demo1 //公司总部
+{
+
+	public static void main(String[] args) {
+		
+		Directors chairman=Directors.executives();
+		//第一次使用单例类--首先完成赋值
+		chairman.setName();
+
+
+
+		chairman.show();
+
+		//这里是为了实现程序的模拟跳转		Demo2.shenzhen();		Demo3.shanghai();
+		
+	}
+   
+	
+}
+
+
+class Directors{//Directors董事局主席
+	
+	
+	private static Directors  chairman=new Directors();//chairman主席
+	private Directors(){
+		
+	}
+	static Directors executives(){//executives高管
+		return chairman;
+	}
+	
+	private String name;
+	private String gender;
+	private int height;
+	private int salary;
+	public String getName() {
+		return name;
+	}
+	
+	public String getGender() {
+		return gender;
+	}
+	
+	public int getHeight() {
+		return height;
+	}
+	
+	public int getSalary() {
+		return salary;
+	}
+
+	public void show(){
+		System.out.println();
+        }	
+	
+}
+
+
+public class Demo2 //深圳
+{
+
+	public static void shenzhen() {			    	Directors chairman=Directors.executives();		//第二次使用单例类--直接调取值出来使用		chairman.show();	}
+   
+	
+}
+
+public class Demo3 //哈尔滨
+{
+
+	public static void shanghai() {				Directors chairman=Directors.executives();		//第三次使用单例类--直接调取值出来使用		chairman.show();	}
+   
+	
+}

@@ -1,287 +1,0 @@
-{\rtf1\ansi\ansicpg936\cocoartf1504\cocoasubrtf830
-{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
-
-\f0\fs24 \cf0 \
-\'d7\'a2\'a3\'ba\'b0\'b4Java\'b9\'e6\'b7\'b6\'ca\'e9\'d0\'b4\'b3\'cc\'d0\'f2\'b4\'fa\'c2\'eb\'a3\'ac\'c8\'e7\'b9\'fb\'c4\'e3\'c8\'cf\'ce\'aa\'b3\'cc\'d0\'f2\'d3\'d0\'b4\'ed\'ce\'f3\'a3\'ac\'c7\'eb\'d6\'b8\'b3\'f6\'a3\'ac\'b2\'a2\'cb\'b5\'c3\'f7\'b3\'cc\'d0\'f2\'b4\'ed\'ce\'f3\'d4\'ad\'d2\'f2\'a1\'a3\
-\
-\
-1.\
-\'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb\
-interface A\{\}\
-\
-class B implements A\
-\{\
-	public String func()\
-	\{\
-		return "func";\
-	\}\
-\}\
-class Demo\
-\{\
-	public static void main(String[] args)\
-	\{\
-		A  a = new B();\
-		System.out.println(a.func());\
-	\}\
-\}\
-\
-\
-2.\
-\'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb	\
-class Fu\
-\{\
-	boolean show(char a)\
-	\{\
-		System.out.println(a);\
-		return true;\
-	\}\
-\}\
-class Demo extends Fu\
-\{\
-	public static void main(String[] args)\
-	\{\
-		int i=0;\
-		Fu f=new Demo();\
-		Demo d=new Demo();\
-		for(f.show('A'); f.show('B')&&(i<2);f.show('C'))\
-		\{\
-			i++;\
-			d.show('D');\
-		\}	\
-	\}\
-	boolean show(char a)\
-	\{\
-		System.out.println(a);\
-		return false;\
-	\}\
-\}\
-\
-\
-3.\
-\'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb	\
-interface A\{\}\
-\
-class B implements A\
-\{\
-	public String test()\
-	\{\
-		return "yes";\
-	\}\
-\}\
-class Demo\
-\{\
-	static A get()\
-	\{\
-		return new B();\
-	\}\
-	public static void main(String[] args)\
-	\{\
-		A a=get();\
-		System.out.println(a.test());\
-	\}\
-\}\
-\
-\
-4.\
-\'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb:   \
-class Super\
-\{\
-	int i=0;\
-	public Super(String a)\
-	\{\
-		System.out.println("A");\
-		i=1;	\
-	\}\
-	public Super()\
-	\{\
-		System.out.println("B");\
-		i+=2;\
-	\}\
-\}\
-class Demo extends Super\
-\{\
-	public Demo(String a)\
-	\{\
-		\
-		System.out.println("C");\
-		i=5;				\
-	\}\
-	public static void main(String[] args)\
-	\{\
-		int i=4;\
-		Super d=new Demo("A");\
-		System.out.println(d.i);\
-	\}\
-\}\
-\
-5.\
-\'d1\'a1\'d4\'f1\'cc\'e2\'a3\'ac\'d0\'b4\'b3\'f6\'b4\'ed\'ce\'f3\'b4\'f0\'b0\'b8\'b4\'ed\'ce\'f3\'b5\'c4\'d4\'ad\'d2\'f2\'a3\'ac\'d3\'c3\'b5\'a5\'d0\'d0\'d7\'a2\'ca\'cd\'b5\'c4\'b7\'bd\'ca\'bd\'a1\'a3\
-class Demo\
-\{\
-	\'a3\'a8public\'a3\'a9 int show(int a,int b)\{return 0;\}\
-\}\
-\'cf\'c2\'c3\'e6\'c4\'c7\'d0\'a9\'ba\'af\'ca\'fd\'bf\'c9\'d2\'d4\'b4\'e6\'d4\'da\'d3\'daDemo\'b5\'c4\'d7\'d3\'c0\'e0\'d6\'d0\'a1\'a3	\
-A.public int show(int a,int b)\{return 0;\}\
-B.private int show(int a,int b)\{return 0;\}\
-C.private int show(int a,long b)\{return 0;\}\
-D.public short show(int a,int b)\{return 0;\
-E.static int show(int a,int b)\{return 0;\}\
-\
-\
-6.\
-\'d0\'b4\'b3\'f6this\'b9\'d8\'bc\'fc\'d7\'d6\'b5\'c4\'ba\'ac\'d2\'e5\'a3\'acfinal\'d3\'d0\'c4\'c4\'d0\'a9\'cc\'d8\'b5\'e3\'a3\'bf\
-\
-7.\
-\'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb\'a3\'ba  \
-class Fu\
-\{\
-	int num=4;\
-	void show()\
-	\{\
-		System.out.println("showFu");\
-	\}\
-\}\
-class Zi extends Fu\
-\{\
-	int num=5;\
-	void show()\
-	\{\
-		System.out.println("showZi");\
-	\}\
-\}\
-class T\
-\{\
-	public static void main(String[] args)\
-	\{\
-		Fu f=new Zi();\
-		Zi z=new Zi();\
-		System.out.println(f.num); \
-		System.out.println(z.num); \
-		f.show();\
-		z.show(); \
-	\}\
-\}\
-\
-8.\
-interface A\
-\{\
-	void show();\
-\}\
-interface B\
-\{\
-	void add(int a,int b);\
-\}\
-class C implements A,B\
-\{\
-	//\'b3\'cc\'d0\'f2\'b4\'fa\'c2\'eb\
-	\
-	private int a,b;\
-	\
-	public void add(int a,int b)\
-	\{\
-		this.a =a;\
-		this.b = b;\
-\
-		\
-	\}\
-	public void show()\
-	\{\
-	   System.out.println(a+b);	\
-		\
-	\}\
-\
-\}\
-class D\
-\{\
-	public static void main(String[] args)\
-	\{\
-		C c=new C();\
-		c.add(4,2);\
-		c.show();//\'cd\'a8\'b9\'fd\'b8\'c3\'ba\'af\'ca\'fd\'b4\'f2\'d3\'a1\'d2\'d4\'c9\'cf\'c1\'bd\'b8\'f6\'ca\'fd\'b5\'c4\'ba\'cd\'a1\'a36\
-	\}\
-\}\
-\
-\
-9.\
-\'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb\
-class Super\
-\{\
-	int i=0;	\
-	public Super(String s)\
-	\{\
-		i=1;	\
-	\}\
-\}\
-class Demo extends Super\
-\{\
-	public Demo(String s)\
-	\{\
-		super(s);\
-		i=2;			\
-	\}\
-	public static void main(String[] args)\
-	\{\
-		Demo d=new Demo("yes");\
-		System.out.println(d.i);\
-	\}\
-\}\
-\
-10.\
-\'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb\
-class Super\
-\{\
-	public int get()\
-	\{return 4;\}\
-\}\
-class Demo15 extends Super\
-\{\
-      \
-	public long get()\{return 5;\}\
-		\
-	public static void main(String[] args)\
-	\{\
-		Super s=new Demo15();\
-		System.out.println(s.get());\
-	\}\
-\}\
-\
-\
-11.\
-\'b2\'b9\'d7\'e3compare\'ba\'af\'ca\'fd\'c4\'da\'b5\'c4\'b4\'fa\'c2\'eb\'a3\'ac\'b2\'bb\'d0\'ed\'cc\'ed\'bc\'d3\'c6\'e4\'cb\'fb\'ba\'af\'ca\'fd\'a1\'a3\
-class Circle\
-\{\
-	private static double pi=3.14;\
-	private double radius;\
-	public Circle(double r)\
-	\{\
-		radius=r;\
-	\}\
-	public static double compare(Circle[] cir)\
-	\{\
-		//\'b3\'cc\'d0\'f2\'b4\'fa\'c2\'eb//\'c6\'e4\'ca\'b5\'be\'cd\'ca\'c7\'d4\'da\'c7\'f3\'ca\'fd\'d7\'e9\'d6\'d0\'b5\'c4\'d7\'ee\'b4\'f3\'d6\'b5\'a1\'a3\
-		\
-	\}\
-\}\
-class TC\
-\{\
-	public static void main(String[] args)\
-	\{\
-		Circle cir[]=new Circle[3];//\'b4\'b4\'bd\'a8\'c1\'cb\'d2\'bb\'b8\'f6\'c0\'e0\'c0\'e0\'d0\'cd\'ca\'fd\'d7\'e9\'a1\'a3\
-		cir[0]=new Circle(1.0);\
-		cir[1]=new Circle(2.0);\
-		cir[2]=new Circle(4.0);\
-		System.out.println("\'d7\'ee\'b4\'f3\'b5\'c4\'b0\'eb\'be\'b6\'d6\'b5\'ca\'c7\'a3\'ba"+Circle.compare(cir));\
-	\}\
-\}\
-\
-\
-\
-\
-\
-\
-\
-}

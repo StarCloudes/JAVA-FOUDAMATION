@@ -6,6 +6,7 @@ public class TestCunDemo {
 		Person p = new Manager();
 		p.sing();
 		p.printSalary();
+		
 	    
 	}
 }

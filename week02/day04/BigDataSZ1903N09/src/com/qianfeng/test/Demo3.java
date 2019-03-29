@@ -84,7 +84,7 @@ public class Demo3 {
 		//创建A类的对象a,给变量赋值num1=4 ,创建B类的对象b,要实现的功能:将num1的值传给num2
 		//1.直接赋值:不建议使用.
 		A a = new A();
-//		a.num1 = 4;
+//		a.setNum1(4);
 		B b = new B();
 //		b.num2 = a.num1;
 		//2.传参

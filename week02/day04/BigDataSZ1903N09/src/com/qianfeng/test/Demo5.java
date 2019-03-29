@@ -46,19 +46,19 @@ class Animal{
 }
 
 interface Inter1{
-	 int age = 10;//(默认是public,final,static类型的),所以必须给一个值
-	public  void show();//(默认是public,abstract类型的)
+	int age = 10;//(默认是public,final,static类型的),所以必须给一个值
+	public abstract void show();//(默认是public,abstract类型的)
 }
 
 interface Inter2{
 	// int age = 10;//(默认是public,final,static类型的),所以必须给一个值
-	public  void run();//(默认是public,abstract类型的)
-	public  void show();
+	public void run();//(默认是public,abstract类型的)
+	public void show();
 }
 
 interface Inter extends Inter1,Inter2{
 
-	public  void eat();
+	public void eat();
 }
 
 //一个子类可以同时实现多个接口,接口之间以,隔开

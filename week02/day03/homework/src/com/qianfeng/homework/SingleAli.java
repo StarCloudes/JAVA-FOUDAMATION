@@ -1,9 +1,15 @@
 package com.qianfeng.homework;
 
+//介绍阿里懂事长
+
+class Chairman{
+	
+}
+
 class Single{
 	private static Single s = null;
 	
-	void Single() {}
+	Single() {}
 	
 	public static Single getSingle() {
 		if(s ==null) {
@@ -42,9 +48,9 @@ public class SingleAli {
 		
 		System.out.println(s1 == s2);
 		
-		s1.setInfo("马云", "男", 170, 1);
-		s1.introduce();
-		s2.introduce();
+//		s1.setInfo("马云", "男", 170, 1);
+//		s1.introduce();
+//		s2.introduce();
 	}	
 
 }
