@@ -20,8 +20,8 @@ public class Demo4 {
 		 * 静态成员方法:编译运行都看父类
 		 */
 		System.out.println(fu.age);//4
-		Fu.show();//打印的父类的方法
-		Zi.show();//打印的子类的方法
+		fu.show();//打印的父类的方法
+		zi.show();//打印的子类的方法
 	}
 }
 
@@ -30,17 +30,17 @@ class Fu{
 	public void run() {
 		System.out.println("Fu-run");
 	}
-	public static  void show() {
+	public static void show() {
 		System.out.println("Fu-show");
 	}
 }
 
 class Zi extends Fu{
 	int age = 8;
-	public  void song() {
+	public static void song() {
 		System.out.println("Zi-song");
 	}
-	public static  void show() {
+	public static void show() {
 		System.out.println("Zi-show");
 	}
 }

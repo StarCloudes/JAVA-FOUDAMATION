@@ -1,0 +1,80 @@
+String：
+		//1.判断：
+	    //判断是否包含一个子字符串
+		//boolean contains(CharSequence s) 
+	    //判断两个字符串的内容是否相同
+		//boolean equals(Object anObject) 
+	    //忽略大小写判断两个字符串的内容是否相同
+		//boolean equalsIgnoreCase(String anotherString) 
+	    //判断是否以某字符串开头
+		//boolean startsWith(String prefix)
+		//判断是否以某字符串结尾
+		//boolean endsWith(String suffix) 
+		
+		
+	    //2.转换：将字符数组转换成字符串
+		//1:使用构造方法
+		//String(char[] value) 
+		//String(char[] value, int offset, int count) 
+		//2:使用静态方法
+		//static String copyValueOf(char[] data) 
+		//static String copyValueOf(char[] data, int offset, int count) 
+		//将字符串转成字符数组
+	    //char[] toCharArray() 
+		//将字节数组转成字符串
+	    //String(byte[] bytes) 
+	    //String(byte[] bytes, int offset, int length)
+	    //String(byte[] bytes, String charsetName)//使用指定的编码将字节数组转换成字符成
+		//将字符串转成字节数组
+	    //byte[] getBytes() 
+		//将基本数据类型转换成字符串
+	    //String.valueOf()
+		
+		
+	    //3.替换：
+		//String replace(char oldChar, char newChar) 
+		//子串:
+		//String substring(int beginIndex)  
+	    //String substring(int beginIndex, int endIndex) //包含起始位置，不包含结束位置，到结束位置的前一位
+		//转换，去除空格，比较:
+		//大小写转换
+		//String toLowerCase() 
+	    //String toUpperCase()
+	    //将字符串两端的空格去掉
+	    //String trim() 
+		//按字典顺序比较两个字符串
+	    //int compareTo(String anotherString)
+		
+		
+		//4.切割: String[] split(String)
+
+
+
+
+
+
+StringBuffer:
+
+    	//1.存储：
+    	//StringBuffer append(boolean b)   从最后插入
+        //StringBuffer insert(int offset, boolean b)   从指定位置插入
+        //2.删除：
+        //StringBuffer delete(int start, int end) 
+        //StringBuffer deleteCharAt(int index)
+        //3.修改：
+        //StringBuffer replace(int start, int end, String str)  替换指定的子字符串
+        //void setCharAt(int index, char ch) 修改一个字符
+
+        //4.获取：
+        //char charAt(int index) 
+    	//int indexOf(String str)
+    	//int indexOf(String str, int fromIndex)
+    	//int lastIndexOf(String str) 
+        //返回指定子字符串(从右边开始计数)在此字符串第一次出现时的索引
+        //int lastIndexOf(String str, int fromIndex) 
+        //返回指定子字符串(从右边开始计数,范围:当前指定的位置-0)在此字符串第一次出现时的索引 
+        //int length() 
+        //返回长度（字符数）。 
+
+        //5.反转：
+        //StringBuffer reverse()

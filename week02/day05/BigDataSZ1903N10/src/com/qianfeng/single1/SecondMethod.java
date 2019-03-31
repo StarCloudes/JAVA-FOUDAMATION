@@ -29,18 +29,6 @@ class SingleInstance{
 	}
 }
 class ChairMan{
-	//作为单例的功能
-//	private static ChairMan chairMan = null;
-//	private ChairMan() {
-//		
-//	}
-//	public static ChairMan getChariMan() {
-//		if (chairMan == null) {
-//			chairMan = new ChairMan();
-//		}
-//		return chairMan;
-//	}
-	
 	//作为董事局主席这个人的功能
 	String name;
 	String sex;
@@ -100,8 +88,9 @@ public class SecondMethod //公司总部
 	public static void main(String[] args) {
 		SingleInstance singleInstance = SingleInstance.getInstance();
 		//第一次使用单例类--首先完成赋值
-		//chairman.setName("马云");
+
 		ChairMan chairman = singleInstance.getChairMan();
+		chairman.setName("马云");
 		chairman.show();
 
 		//这里是为了实现程序的模拟跳转

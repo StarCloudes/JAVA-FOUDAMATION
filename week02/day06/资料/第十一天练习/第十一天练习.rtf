@@ -1,0 +1,308 @@
+{\rtf1\ansi\ansicpg936\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fnil\fcharset134 PingFangSC-Regular;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \'d7\'a2\'a3\'ba\'b0\'b4Java\'b9\'e6\'b7\'b6\'ca\'e9\'d0\'b4\'b3\'cc\'d0\'f2\'b4\'fa\'c2\'eb\'a3\'ac\'c8\'e7\'b9\'fb\'c4\'e3\'c8\'cf\'ce\'aa\'b3\'cc\'d0\'f2\'d3\'d0\'b4\'ed\'ce\'f3\'a3\'ac\'c7\'eb\'d6\'b8\'b3\'f6\'a3\'ac\'b2\'a2\'cb\'b5\'c3\'f7\'b3\'cc\'d0\'f2\'b4\'ed\'ce\'f3\'d4\'ad\'d2\'f2\'a1\'a3\
+\
+1.\
+\'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb\
+class Demo\
+\{	\
+	public static void func()\
+	\{\
+		try\
+		\{\
+			throw  new Exception();\
+		\}\
+		finally\
+		\{\
+			System.out.println("B");\
+		\}                                                                                                                               \
+	\}\
+	public static void main(String[] args)\
+	\{\
+		try\
+		\{\
+			func();\
+			System.out.println("A");\
+		\}\
+		catch(Exception e)		//Exception e=new Exception;\
+		\{\
+			System.out.println("C");\
+		\}\
+		System.out.println("D");\
+	\}\
+\}\
+\
+\'c8\'e7\'b9\'fbfunc\'b7\'c5\'c9\'cf\'c9\'f9\'c3\'f7\'c1\'cb\'b8\'c3\'d2\'ec\'b3\'a3\'a1\'a3\'bd\'e1\'b9\'fb\'ca\'c7\'a3\'bf\
+\
+====================================================================\
+2.\
+\'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb	\
+class Test \
+\{\
+	Test()\
+	\{       \
+		System.out.println("Test");\
+	\}\
+\}\
+class Demo extends Test\
+\{\
+	Demo()\
+	\{  \
+		System.out.println("Demo");\
+	\}\
+	public static void main(String[] args)\
+	\{\
+		new Demo();\
+		new Test();\
+	\}\
+\}\
+\
+\
+3.\
+\'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb\
+class TD\
+\{\
+	int y=6;\
+	class Inner\
+	\{\
+		int y=3;  \
+\
+		void show()\
+		\{\
+			System.out.println(y);\
+		\}\
+	\}\
+\}\
+class TC\
+\{\
+	public static void main(String[] args)\
+	\{\
+		TD.Inner ti=new TD().new Inner();\
+		ti.show();\
+	\}\
+\}\
+\
+4.\
+\'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb	\
+class Demo\
+\{\
+	public static void main(String[] args)\
+	\{\
+		try\
+		\{       showExce();//\'bf\'c9\'c4\'dc\'b7\'a2\'c9\'fa\'d2\'ec\'b3\'a3\
+			System.out.println("A");\
+		\}\
+		catch(Exception e)\
+		\{\
+			System.out.println("B");\
+		\}\
+		finally\
+		\{\
+			System.out.println("C");\
+		\}\
+		System.out.println("D");\
+	\}\
+\
+	public static void showExce()throws Exception\
+	\{\
+		throw new Exception();\
+	\}\
+\}\
+\
+\
+\
+5.\
+\'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb\'a3\'ba\
+class Demo\
+\{	\
+	public static void func()\
+	\{\
+		try\
+		\{\
+			throw  new Exception();\
+			System.out.println("A");\
+		\}\
+		catch(Exception e)\
+		\{\
+			System.out.println("B");\
+		\}\
+	\}\
+	public static void main(String[] args)\
+	\{\
+		try\
+		\{\
+			func();\
+		\}\
+		catch(Exception e)\
+		\{\
+			System.out.println("C");\
+		\}\
+		System.out.println("D");\
+	\}\
+\}\
+\
+\
+6.\
+class Demo\
+\{	\
+	public void func()\
+	\{\
+		//\'ce\'bb\'d6\'c31\'a3\'bb\
+		new  Inner();\
+		\
+	\}\
+\
+	class Inner\{\}\
+\
+	public static void main(String[] args)\
+	\{\
+		Demo d=new Demo();\
+		// \'ce\'bb\'d6\'c32 \
+		new Inner();\
+	\}\
+\}\
+\
+//\'c5\'d0\'b6\'cf\'d5\'e2\'d1\'f9\'d0\'b4\'ca\'c7\'b7\'f1\'bf\'c9\'d0\'d0\
+A.\'d4\'da\'ce\'bb\'d6\'c31\'d0\'b4 new Inner();	\
+B.\'d4\'da\'ce\'bb\'d6\'c32\'d0\'b4 new Inner();\'a1\'a3\
+C.\'d4\'da\'ce\'bb\'d6\'c32\'d0\'b4 new d.Inner(); \
+D.\'d4\'da\'ce\'bb\'d6\'c32\'d0\'b4 new Demo.Inner();\
+\
+7.\
+\'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb\
+class Exc0 extends Exception\{\}\
+class Exc1 extends Exc0\{\}\
+\
+class Demo\
+\{\
+	public static void main(String[] args)\
+	\{\
+		try\
+		\{\
+			throw new Exc1();\
+		\}		\
+		catch(Exception e)	\
+		\{\
+			System.out.println("Exception");\
+		\}\
+		/*catch(Exc0 e)\
+		\{\
+			System.out.println("Exc0");\
+		\}*/\
+	\}\
+\}\
+\
+8.\
+\'b2\'b9\'d7\'e3\'b4\'fa\'c2\'eb\
+interface Test\
+\{\
+	void func();\
+\}\
+class Demo\
+\{\
+	public static void main(String[] args)\
+	\{\
+		show(new Test()\{public void func()\{System.out.print("wode");\}\});\
+		\
+               \
+\
+		\
+	\}\
+	public static void show(Test t)\
+	\{\
+		t.func();\
+	\}\
+\}\
+\
+====================================================================\
+9.\
+\'d0\'b4\'b3\'f6\'b3\'cc\'d0\'f2\'bd\'e1\'b9\'fb	\
+class Test\
+\{ \
+	public static String output=""; \
+	public static void foo(int i)\
+	\{ \
+		try\
+		\{ \
+			if(i==1)\
+				throw new Exception(); 	\
+			output+="1";\
+		\} \
+		catch(Exception e)\
+		\{ \
+			output+="2";\
+			return; \
+		\} \
+		finally\
+		\{ \
+			output+="3"; \
+		\} \
+		output+="4"; \
+	\}\
+	public static void main(String args[])\
+	\{ \
+		foo(0);\
+		System.out.println(output);\
+		foo(1); \
+		System.out.println(output);\
+	\}\
+\} \
+\
+====================================================================\
+10.\
+\'bd\'a8\'c1\'a2\'d2\'bb\'b8\'f6\'cd\'bc\'d0\'ce\'bd\'d3\'bf\'da\'a3\'ac\'c9\'f9\'c3\'f7\'d2\'bb\'b8\'f6\'c3\'e6\'bb\'fd\'ba\'af\'ca\'fd\'a1\'a3\'d4\'b2\'d0\'ce\'ba\'cd\'be\'d8\'d0\'ce\'b6\'bc\'ca\'b5\'cf\'d6\'d5\'e2\'b8\'f6\'bd\'d3\'bf\'da\'a3\'ac\'b2\'a2\'b5\'c3\'b3\'f6\'c1\'bd\'b8\'f6\'cd\'bc\'d0\'ce\'b5\'c4\'c3\'e6\'bb\'fd\'a1\'a3\
+\'d7\'a2\'a3\'ba\'cc\'e5\'cf\'d6\'c3\'e6\'cf\'f2\'b6\'d4\'cf\'f3\'b5\'c4\'cc\'d8\'d5\'f7\'a3\'ac\'b6\'d4\'ca\'fd\'d6\'b5\'bd\'f8\'d0\'d0\'c5\'d0\'b6\'cf\'a1\'a3\'d3\'c3\'d2\'ec\'b3\'a3\'b4\'a6\'c0\'ed\'a1\'a3\'b2\'bb\'ba\'cf\'b7\'a8\'b5\'c4\'ca\'fd\'d6\'b5\'d2\'aa\'b3\'f6\'cf\'d6\'a1\'b0\'d5\'e2\'b8\'f6\'ca\'fd\'d6\'b5\'ca\'c7\'b7\'c7\'b7\'a8\'b5\'c4\'a1\'b1\'cc\'e1\'ca\'be\'a3\'ac\'b2\'bb\'d4\'d9\'bd\'f8\'d0\'d0\'d4\'cb\'cb\'e3\'a1\'a3\
+\
+25.\
+\'d4\'da\'d2\'bb\'b8\'f6\'c0\'e0\'d6\'d0\'b1\'e0\'d0\'b4\'d2\'bb\'b8\'f6\'b7\'bd\'b7\'a8\'a3\'ac\'d5\'e2\'b8\'f6\'b7\'bd\'b7\'a8\'cb\'d1\'cb\'f7\'d2\'bb\'b8\'f6\'d7\'d6\'b7\'fb\'ca\'fd\'d7\'e9\'d6\'d0\'ca\'c7\'b7\'f1\'b4\'e6\'d4\'da\'c4\'b3\'b8\'f6\'d7\'d6\'b7\'fb\'a3\'ac\
+\'c8\'e7\'b9\'fb\'b4\'e6\'d4\'da\'a3\'ac\'d4\'f2\'b7\'b5\'bb\'d8\'d5\'e2\'b8\'f6\'d7\'d6\'b7\'fb\'d4\'da\'d7\'d6\'b7\'fb\'ca\'fd\'d7\'e9\'d6\'d0\'b5\'da\'d2\'bb\'b4\'ce\'b3\'f6\'cf\'d6\'b5\'c4\'ce\'bb\'d6\'c3\'a3\'a8\'d0\'f2\'ba\'c5\'b4\'d30\'bf\'aa\'ca\'bc\'bc\'c6\'cb\'e3\'a3\'a9\'a3\'ac\
+\'b7\'f1\'d4\'f2\'a3\'ac\'b7\'b5\'bb\'d8-1\'a1\'a3\'d2\'aa\'cb\'d1\'cb\'f7\'b5\'c4\'d7\'d6\'b7\'fb\'ca\'fd\'d7\'e9\'ba\'cd\'d7\'d6\'b7\'fb\'b6\'bc\'d2\'d4\'b2\'ce\'ca\'fd\'d0\'ce\'ca\'bd\'b4\'ab\'b5\'dd\'b4\'ab\'b5\'dd\'b8\'f8\'b8\'c3\'b7\'bd\'b7\'a8\'a3\'ac\
+\'c8\'e7\'b9\'fb\'b4\'ab\'c8\'eb\'b5\'c4\'ca\'fd\'d7\'e9\'ce\'aanull\'a3\'ac\'d3\'a6\'c5\'d7\'b3\'f6IllegalArgumentException\'d2\'ec\'b3\'a3\'a1\'a3\
+\'d4\'da\'c0\'e0\'b5\'c4main\'b7\'bd\'b7\'a8\'d6\'d0\'d2\'d4\'b8\'f7\'d6\'d6\'bf\'c9\'c4\'dc\'b3\'f6\'cf\'d6\'b5\'c4\'c7\'e9\'bf\'f6\'b2\'e2\'ca\'d4\'d1\'e9\'d6\'a4\'b8\'c3\'b7\'bd\'b7\'a8\'b1\'e0\'d0\'b4\'b5\'c3\'ca\'c7\'b7\'f1\'d5\'fd\'c8\'b7\'a3\'ac\
+\'c0\'fd\'c8\'e7\'a3\'ac\'d7\'d6\'b7\'fb\'b2\'bb\'b4\'e6\'d4\'da\'a3\'ac\'d7\'d6\'b7\'fb\'b4\'e6\'d4\'da\'a3\'ac\'b4\'ab\'c8\'eb\'b5\'c4\'ca\'fd\'d7\'e9\'ce\'aanull\'b5\'c8\'a1\'a3\
+getIndex(null,'a');\
+class lx2\
+\{\
+	public static void main(String[] args)\
+	\{\
+		char b[]=\{'a','b','c','d','e'\};\
+		char a='c';\
+		try\
+		\{\
+			int Index =getIndex(b,a);\
+			System.out.print(Index);\
+			\
+		\}\
+		catch (Exception e)\
+		\{\
+			System.out.print("\'c4\'e3\'ca\'e4\'c8\'eb\'b5\'c4\'d7\'d6\'b7\'fb\'ce\'aa\'bf\'d5");\
+		\}\
+	\}\
+\
+public static int getIndex(char arr[],char r)\
+\{\
+	if (arr==null)\
+	\{\
+		throw  new IllegalArgumentException();\
+	\}\
+    else\
+	for (int i=0;i<arr.length ;i++ )\
+	\{\
+		if(r==arr[i])\
+		\{\
+			return i;\
+		\}\
+		\
+	\}\
+	return -1;\
+\}\
+\}\
+\
+\
+\
+}

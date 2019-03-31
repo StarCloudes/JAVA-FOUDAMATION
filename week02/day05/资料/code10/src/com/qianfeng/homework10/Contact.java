@@ -15,7 +15,7 @@ interface Operation {
 
 }
 
-class LinkMan implements Operation {
+abstract class LinkMan implements Operation {
 
 	private String name;
 	private int year;
@@ -34,52 +34,13 @@ class LinkMan implements Operation {
 	}
 
 	
-	public String toString() {
-		return "LinkMan [number=" + number + "]";
-	}
-
-	@Override
-	public Contact[] addLinkMan(Contact linkMan, Contact[] Linkmans) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Contact[] deleteLinkManByName(Contact name, Contact[] Linkmans) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Contact[] deleteLinkManByNumber(Contact number, Contact[] Linkmans) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Contact[] setLinkMan(String name, String number, Contact[] Linkmans) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Contact[] searchLinkMan(String name, Contact[] Linkmans) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void searchAll(Contact[] Linkmans) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
 
 
 public class Contact{
+	
 	public static void main(String[] args) {
-		LinkMan linkMans  = new LinkMan();
+		
 	}
 	
 }
