@@ -48,7 +48,7 @@ public class Demo8 {
 			public void show() {
 				System.out.println("show");
 			}
-		}.eat();
+		}.show();
 		//给匿名子类对象起一个名字
 		Animal animal2 = new Animal() {
 			int age;

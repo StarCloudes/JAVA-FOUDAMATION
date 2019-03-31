@@ -73,7 +73,7 @@ new Pig().age = "pegg";
 * 注意点:  使用匿名对象充当参数适合于，不在方法的外部给作为参数的对象赋任何属性值的前提下.
 
 ```java
-feedPig(new pig());
+feedPig(new Pig());
 ```
 
 
