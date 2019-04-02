@@ -4,8 +4,8 @@ class Demo11
 {
 	public static void main(String[] args)
 	{
-		char[] b={'a','b','c','d','e'};
-		char a='c';
+		char[] b= null;
+		char a= ' ';
 		try
 		{
 			int Index =getIndex(b,a);

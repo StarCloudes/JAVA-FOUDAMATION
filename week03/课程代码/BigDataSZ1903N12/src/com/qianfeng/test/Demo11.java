@@ -23,6 +23,7 @@ public class Demo11 {
 //    	double  Double.parseDouble("3.45")
     	//只能是数值型的字符串才能被转成简单数据类型
     	int b = Integer.parseInt("12345");
+   
     	System.out.println(b+1);
 //    	2.把十进制转成其它进制
 //       Integer.toHexString()  转成十六进制

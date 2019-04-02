@@ -1,0 +1,144 @@
+
+
+1，模拟一个trim方法，去除字符串两端的空格。
+	思路：
+	1，判断字符串第一个位置是否是空格，如果是继续向下判断，直到不是空格为止。
+		结尾处判断空格也是如此。
+	2，当开始和结尾都判断到不是空格时，就是要获取的字符串。
+class lx1 
+{
+	public static void main(String[] args) 
+	{
+		String str="   abcd  efg   ";
+		String t=trim(str);
+		System.out.println(t);
+	}
+	public static String trim(String str)
+	{
+		int start=0;
+		int end=str.length()-1;
+		while (str.charAt(start)==' ')
+		{
+			start++;
+		}
+		while(str.charAt(end)==' ')
+		{
+			end--;
+		}
+		return str.substring(start,end+1);
+	}
+}
+
+
+2，将一个字符串进行反转。将字符串中指定部分进行反转，"abcdefg";abfedcg
+	思路：
+	1，曾经学习过对数组的元素进行反转。
+	2，将字符串变成数组，对数组反转。
+	3，将反转后的数组变成字符串。
+	4，只要将或反转的部分的开始和结束位置作为参数传递即可。
+class lx1
+{
+	public static void main(String[] args)
+	{
+		String str="abcdefg";
+		System.out.println(fanZhuan(str,2,5));
+	}
+	public static String fanZhuan(String str,int start,int end)
+	{
+		char[] t=str.toCharArray();
+		daoxu (t,start,end);
+		return  new String(t);
+		
+	}
+	public static void daoxu(char arr[],int start,int end)
+	{
+		for (int i=start,j=end;i<j;i++,j--)
+		{
+			char ch;
+			ch=arr[i];
+			arr[i]=arr[j];
+			arr[j]=ch;
+		}
+		
+	}
+}
+
+
+3:对字符串中字符进行自然顺序排序。
+  1:将字符串转成字符数组  
+  2：排序
+  2：将数组转成字符串 
+
+
+
+
+5.验证ean-13条码的验证码是否正确  
+  String code = "6921168509256";
+  取前12位的奇数位的和
+  取前12位的偶数位的和
+  将"奇数位和"与"偶数位和的三倍"相加求和
+  取和的个位数，然后用10减去这个个位数，相减的结果就是条码的验证码
+  如果条码的第13位数字和这个验证码相同就说明验证码正确
+class lx1
+{
+	public static void main(String[] args)
+	{
+		String code="6921168509256";
+		System.out.println(lx1.yz(code));
+		System.out.println(('6'-'0'));
+
+	}
+
+	public static int oushu(String str)
+	{
+		char a[]=str.toCharArray();
+		int sum1=0;
+		for (int i=1;i<13 ;i++ )
+		{
+			if (i%2!=0)
+			sum1=sum1+(a[i]-'0');
+		}
+		return sum1;
+	}
+	public static int jishu(String str)
+	{
+		char b[]=str.toCharArray();
+		int sum2=0;
+		for (int i=0;i<12;i++)
+		{
+			if (i%2==0)
+			sum2=sum2+(b[i]-'0');
+		}
+		return sum2;
+	}
+	public static int yzm(String str)
+	{
+		return 10-(jishu(str)+oushu(str)*3)%10;
+	}
+	public static String yz(String str)
+	{
+		char c[]=str.toCharArray();
+		int n=c[12]-'0';
+		int m=yzm(str);
+		if (n==m)
+		{
+			return "验证码正确";
+		}
+		else
+			return "验证码不正确";
+	}
+
+}
+
+
+	//public static void sop(Object obj)
+	
+
+
+
+
+4.得到10个1--20之间的随机数，要求不能重复(要求用集合)  Random类实现
+
+
+5.给定一个含有n个元素的整型数组a，如果元素出现的次数为奇数次，则输出   n%2!=0
+
