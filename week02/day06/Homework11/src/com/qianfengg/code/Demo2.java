@@ -2,20 +2,20 @@ package com.qianfengg.code;
 
 class Test 
 {
-	Test()
+	Test(int a)
 	{       
-		System.out.println("Test");
+		System.out.println("Test "+a);
 	}
 }
 class Demo2 extends Test
 {
 	Demo2()
-	{  
-		System.out.println("Demo");
+	{   super(2);
+		System.out.println("Demo ");
 	}
 	public static void main(String[] args)
 	{
 		new Demo2();
-		new Test();
+		new Test(1);
 	}
 }

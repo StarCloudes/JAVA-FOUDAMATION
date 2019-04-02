@@ -13,7 +13,7 @@ class Demo6 extends Super2
 	public Demo6(String s)
 	{
 		super(s);
-		i=2;			
+		//i=2;			
 	}
 	public static void main(String[] args)
 	{

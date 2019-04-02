@@ -7,7 +7,7 @@ class Demo5
 		try
 		{
 			throw  new Exception();
-			//System.out.println("A");
+			//System.out.println("A"); 抛出异常后面不能接语句
 		}
 		catch(Exception e)
 		{

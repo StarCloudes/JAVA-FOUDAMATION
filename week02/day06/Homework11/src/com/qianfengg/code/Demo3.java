@@ -9,8 +9,8 @@ class TD
 
 		void show()
 		{
-			System.out.println(y);
-			System.out.println(this.y);
+			System.out.println(y);  //就近
+			//System.out.println(this.y);
 			System.out.println(TD.this.y);
 		}
 	}

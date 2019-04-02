@@ -10,15 +10,15 @@ class Demo7
 		try
 		{
 			throw new Exc1();
-		}		
-//		catch(Exception e)	//已经包含了所有异常，往下会重复捕捉
-//						    //子类异常写在了父类异常的上面
-//		{
-//			System.out.println("Exception");
-//		}
+		}	
 		catch(Exc0 e)
 		{
 			System.out.println("Exc0");
+		}
+		catch(Exception e)	//已经包含了所有异常，往下会重复捕捉
+						    //子类异常写在了父类异常的上面
+		{
+			System.out.println("Exception");
 		}
 	}
 }
