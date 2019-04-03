@@ -1,4 +1,4 @@
-一、字符串
+一、字符串（重点）
 
 1. 字符串基础
 
@@ -123,6 +123,7 @@
 
      ```java
      char charAt(int index) 
+     举🌰 int chr = str.charAt(i);
      int indexOf(String str) //从左到右查找指定的字符串
      int indexOf(String str, int fromIndex)
      int lastIndexOf(String str) 
@@ -151,5 +152,6 @@
 
 二、网络
 
-
+1. 客户端与服务器
+2. 网址的构成
 

@@ -9,7 +9,7 @@ public class ReverseString {
 	public static void reverse(String s, int start,int end) {
 		char[] s1 = s.toCharArray() ;
 		reverseArray(s1, start, end);
-		String s2 = new String(s1) ;
+		String s2 = new String(s1) ;//将字符数组转换成字符串
 		System.out.println(s2);	
 	}
 

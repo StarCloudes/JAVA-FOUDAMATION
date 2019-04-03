@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class Htpp {
 	public static void main(String[] args) {
-		String string = new String("http://www.baidu.com/sdf/sfs?name=bingbing&age=33");
+		String string = new String("http://www.baidu.com:30/sdf/sfs?name=bingbing&age=33");
 		validate(string);
 		getPort(string);
 		getSerch(string);

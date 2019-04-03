@@ -1,10 +1,8 @@
 package com.hoemwork.homework13;
 
-import com.sun.accessibility.internal.resources.accessibility;
-
 public class SortString {
 	public static void main(String[] args) {
-		String string = "aedcbfg";
+		String string = "aeAdcDbfg";
 		sort(string);
 	}
 	

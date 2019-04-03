@@ -18,7 +18,7 @@
 6. 异常处理
 
    ```java
-   // catch会对try里面的代码进行监听，try遇到异常会立即中断代码进入catch
+   // catch会对try里面的代码进行监听，try遇到异常会立即中断代码进入atch
    try{
        //可能发生的异常
    }catch(Exception e){//捕获异常
