@@ -7,7 +7,7 @@ import java.util.Random;
 public class Demo4 {
 	public static void main(String[] args) {
 		
-		ArrayList list = new ArrayList<>();
+		ArrayList<Integer> list = new ArrayList<>();
 		
 		Random random = new Random();
 		
@@ -20,7 +20,7 @@ public class Demo4 {
 		System.out.println(list);
 		
 		
-		Iterator iterator = list.iterator();
+		Iterator<Integer> iterator = list.iterator();
 		int sum = 0;
 		while (iterator.hasNext()) {
 			Integer value = (Integer) iterator.next();

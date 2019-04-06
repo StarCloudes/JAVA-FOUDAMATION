@@ -2,7 +2,7 @@ package com.qianfeng.test;
 /*
  * 多异常处理
  * catch会对try里面的代码进行监听,如果try里面的代码没有发生异常,catch不会执行,会直接执行后面的代码.
- * 如果truy里面的代码发生了异常,catch会立刻捕获(效果:try里面的代码会立刻终端,直接执行catch)
+ * 如果try里面的代码发生了异常,catch会立刻捕获(效果:try里面的代码会立刻终端,直接执行catch)
  * try{
  * 		可能发生异常的代码
  * }catch(异常一  e){ //捕获异常    e就是要捕获的异常

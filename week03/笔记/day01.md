@@ -2,20 +2,20 @@
 
 1. Throwable 父类
 
-2. Error ：运行中出现的严重的错误，不需要我们进行更改
+   * Error ：运行中出现的严重的错误，不需要我们进行更改
 
-3. Exception ：运行中出现的不严重的错误，我们可以尝试去改动
+   * Exception ：运行中出现的不严重的错误，我们可以尝试去改动
 
-4. Exception 分类
+2. Exception 分类
 
    * 系统异常和自定义异常
 
    * 编译异常和运行时异常（RuntimeException）
    * 举🌰，数组下标越界异常，空指针异常
 
-5. java虚拟机拥有处理异常的能力，打印异常名字、原因和位置
+3. java虚拟机拥有处理异常的能力，打印异常名字、原因和位置
 
-6. 异常处理
+4. 异常处理
 
    ```java
    // catch会对try里面的代码进行监听，try遇到异常会立即中断代码进入atch
@@ -65,11 +65,10 @@
      }
      ```
 
-7. 自定义异常
+5. 自定义异常
    * 解决系统没有解决的异常，可以实现跨类处理
    * 实际应用：订单异常、用户异常、负数异常
-   * 举🌰，老师上课电脑异常
-   * 子类重写方法中使用异常   
+   * 举🌰，老师上课电脑异常   
 
    ```java
    class IllegalNumException extends Exception {
@@ -82,6 +81,8 @@
    	}
    }
    
+    //异常对象的抛出---throw
+    //异常的声明(我们要给可能发生异常的方法进行异常的声明)----throws
    interface Inter {
    	public abstract double yuan(double radius) throws IllegalNumException;
    
@@ -117,15 +118,15 @@
    		System.out.println("请输入矩形的宽");
    		double b = sc.nextDouble();
    		Hh mianji = new Hh();
+       
+       //使用trycatch的位置:一般是调用可能发生异常的方法的位置
    		try {
-   
    			System.out.print("圆的面积为" + mianji.yuan(r));
    		} catch (IllegalNumException e) {
    			System.out.println(e.getMessage());
    		}
    
    		try {
-   
    			System.out.print("矩形的面积为" + mianji.ju(a, b));
    		} catch (IllegalNumException e) {
    			System.out.println(e.getMessage());
@@ -134,20 +135,84 @@
    }
    ```
 
-   
 
+* 子类重写方法中使用异常
 
+  ```java
+  //为了解释FuShuException构造方法中的参数如何在打印方法中显示.
+  public class Demo8 {
+  	public static void main(String[] args) {
+  		Teacher teacher = new Teacher("除数为负数了");
+  		teacher.printStackTrace();
+  	}
+  }
+  
+  class Person{//相当于Exception
+  	private String message;
+  	public String getMessage() {
+  		return message;
+  	}
+  	public void setMessage(String message) {
+  		this.message = message;
+  	}
+  	public Person() {
+  		super();
+  		// TODO Auto-generated constructor stub
+  	}
+  	public Person(String message) {
+  		super();
+  		this.message = message;
+  	}
+  	public void printStackTrace() {
+  		System.out.println(this.getMessage());
+  	}
+  }
+  
+  //相当于FuShuException
+  class Teacher extends Person{
+  
+  	public Teacher() {
+  	}
+  
+  	public Teacher(String message) {
+  		super(message);
+  	}
+  }
+  ```
+
+  
 
 二、模版设计模式
 
 1. 定义：确定的功能交给当前类实现，不确定的类交给子类去实现，子类实现的结果反过来影响确定的功能。
 2. 举🌰，计算一个功能的耗时
 
+```java
+public abstract class Game {
+   abstract void initialize();
+   abstract void startPlay();
+   abstract void endPlay();
+ 
+   //模板
+   public final void play(){
+ 
+      //初始化游戏
+      initialize();
+ 
+      //开始游戏
+      startPlay();
+ 
+      //结束游戏
+      endPlay();
+   }
+}
+```
+
 
 
 三、包装类
 
-1. 定义：对简单数据类型的数据进行封装，形成的类
+1. 定义：专门将简单数据类型的数据进行封装,形成的对应的类
 
 2. 基本类型转成字符串类型、字符串类型转基本类型
 
@@ -156,7 +221,7 @@
 
 3. 包装类重写了toString
 
-4. 通过调用intValue获取成员变量的值，方法内部可以自动或强制类型转换
+4. 通过调用intValue（类型+Value）获取成员变量的值，方法内部可以自动或强制类型转换
 
 5. 装箱和拆箱
 
@@ -164,10 +229,9 @@
 
    * 拆箱：将数据从包装类取出
 
-   * Jdk1.5开始，自动拆箱
+   * Jdk1.5开始，自动拆箱,装箱
 
-6. 一个字节范围内相等，超出一个字节范围不相等
+6. 一个字节（8bit）范围内相等，超出一个字节范围不相等
 
 
 
-四、字符串

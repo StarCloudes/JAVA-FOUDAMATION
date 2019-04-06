@@ -21,7 +21,7 @@ public class Demo12 {
 		//拆箱
 		int aa = integer.intValue();
 		short aaa = integer.shortValue();//方法内部进行了强制类型转换
-		System.out.println(aa);
+		System.out.println(aaa);
 		
 		//从jdk1.5开始可以实现自动拆箱,装箱
 		Integer integer2 = new Integer(6);

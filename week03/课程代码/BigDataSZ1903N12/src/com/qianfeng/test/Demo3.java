@@ -5,7 +5,7 @@ package com.qianfeng.test;
 public class Demo3 {
 	public static void main(String[] args) {
 		int[] arr = new int[] {4,5,7};
-		System.out.println(arr[10]);//数组下标越界异常  ArrayIndexOutOfBoundsException
+		System.out.println(arr[1]);//数组下标越界异常  ArrayIndexOutOfBoundsException
 		
 		arr = null;
 		int value = arr[0];//空指针异常   NullPointerException

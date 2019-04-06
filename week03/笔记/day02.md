@@ -20,7 +20,7 @@
    System.out.println(s1 == s3); //false
    System.out.println(s3 == s4); //false
    
-   //String重写了equals的方法
+   //String重写了equals的方法，重新制定了比较规则,变成了让s1与s3属性的地址比较
    System.out.println(s3.equals(s4));   //true
    System.out.println(s1.contains(s3));  //true
    ```
@@ -88,6 +88,8 @@
      ```java
      //切割:
      String[] split(String)
+       
+     char cha = s1.charAt(0);
      ```
 
      
@@ -101,7 +103,7 @@
    * 存储
 
      ```java
-     StringBuffer append(boolean b)   //从最后插入
+     StringBuffer D de le te(boolean b)   //从最后插入
      StringBuffer insert(int offset, boolean b)   //从指定位置插入
      ```
 

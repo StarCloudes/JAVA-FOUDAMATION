@@ -33,13 +33,13 @@ public class Demo2 {
 		String s4 = new String("1000phone");
 		
 		System.out.println(s1 == s2);//true
-		System.out.println(s1 == s3);//true
-		System.out.println(s3 == s4);//true
+		System.out.println(s1 == s3);//false
+		System.out.println(s3 == s4);//false
 		
 		//使用equals
 		//String默认重写了Object的equals方法,重新制定了比较规则,变成了让s1与s3属性的地址比较
-		System.out.println(s1.equals(s3));
-		
+		System.out.println(s1.equals(s3)); //true
+		System.out.println(s1.contains(s3)); 
 		//总结:以后尽量使用equals进行String的比较
 	}
 }

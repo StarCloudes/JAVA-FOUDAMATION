@@ -6,9 +6,9 @@
 
 
 1. 下面关于java.lang.Exception类的说法正确的是（A ）
-A 继承自Throwable      B Serialable      C不记得，反正不正确
+A 继承自Throwable      B Serialable序列化      C不记得，反正不正确
 
-2. 下面程序的运行结果是（B ）
+2. 下面程序的运行结果是（ B ）
 String str1 = "hello";
 String str2 = "he" + new String("llo");
 System.out.println(str1 == str2);
@@ -30,7 +30,7 @@ D WeakMap继承自HashMap
 A 存在       B  不存在 
 
 6. 0.6332的数据类型是（B）
-A float     B double     C Float      D Double
+A float 单精度    B double     C Float      D Double
 
 7. 下面哪个流类属于面向字符的输入流(  )
  A  BufferedWriter           B  FileInputStream         
@@ -39,8 +39,8 @@ A float     B double     C Float      D Double
 8. Java接口的修饰符可以为（D）
 A private     B protected     C final       D abstract
 
-9. 不通过构造函数也能创建对象吗（B）
-A 是     B 否
+9. 不通过构造函数也能创建对象吗（B）克隆 反射（绕过new） 序列化
+A 是     B 否 
 
 
 
@@ -50,13 +50,13 @@ public class NULL {
         System.out.println("haha");
     }
     public static void main(String[] args) {
-        ((NULL)null).haha();
+        ((NULL)null).haha(); //null强转什么类型就是什么类型
     }
 }
 A     能正常运行       B   不能
 
 12. 写出下面程序的运行结果：
-class HelloA {
+class HelloA {                
     public HelloA() {
         System.out.println("HelloA");4
     }
@@ -85,14 +85,14 @@ import java.io.*;
 import java.util.*;
  public class foo{
     public static void main (String[] args){
-        String s;
+        String s; 
         System.out.println("s=" + s);    
      }
 }
 A 代码得到编译，并输出“s=” 
 B 代码得到编译，并输出“s=null”
 C 由于String s没有初始化，代码不能编译通过
-D 代码得到编译，但捕获到 NullPointException异常
+D 代码得到编译，但捕获到 NullPointException异常 //运行时异常
 
 14.  System.out.println("5" + 2);的输出结果应该是（A）。
 A  52          B  7          C  2                     D  5
@@ -105,11 +105,11 @@ public class Example {
         Example ex = new Example();
         ex.change(ex.str, ex.ch);
         System.out.print(ex.str + " and ");
-        System.out.print(ex.ch);
+        System.out.print(Arrays.toStriing(ex.ch));
     }
     public void change(String str, char ch[]) {
-        str = "test ok";
-        ch[0] = 'g';
+        str = "test ok";  //值传递
+        ch[0] = 'g';      //址传递
     }
 }
 A、 good and abc
@@ -128,7 +128,7 @@ C FileNotFoundException          D IndexOutOfBoundsException
          case 1:
             result = result + i;
         case 2:
-            result = result + i * 2;
+            result = result + i * 2;  //没有break
         case 3:
             result = result + i * 3;
         }
@@ -145,7 +145,7 @@ public abstract class MyClass {
 }
 A public abstract void method(int a);
 B constInt = constInt + 5;
-C public int method();
+C public int method(); //必须abstract
 D public abstract void anotherMethod() {}
 
 
@@ -163,7 +163,8 @@ D public abstract void anotherMethod() {}
 
 class Child extends People {
     People father;
-    public Child(String name) {//super();
+    public Child(String name) {
+        //super();
         System.out.print(3);
         this.name = name;
         father = new People(name + ":F");
@@ -199,7 +200,7 @@ public class Dervied extends Base {
     }
 
     public static void main(String[] args){ 
-        new Dervied();//1.执行父类的构造方法  2.给自己的成员变量赋值   3。调用构造方法中的调用的方法    
+        new Dervied();//0.给成员初始化 1.执行父类的构造方法  2.给自己的成员变量赋值   3。调用构造方法中的调用的方法    
     }
 }
 
