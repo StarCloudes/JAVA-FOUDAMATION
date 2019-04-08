@@ -1,0 +1,24 @@
+1：假如有以下email数据“aa@sohu.com,bb@163.com,cc@sina.com”现需要把email中的用户部分和邮件地址部分分离，分离后以键值对应的方式放入HashMap？
+
+
+2.写出以下程序可能的执行过程
+class MyThread extends Thread{
+	public void run()
+	{
+		try {
+			Thread.currentThread().sleep(3000);
+		} catch (InterruptedException e) {
+		}
+		System.out.println("MyThread running");
+	}
+}
+public class ThreadTest{
+
+	public static void main(String argv[])
+		{
+			MyThread t = new MyThread();
+			t.run();
+			t.start();
+			System.out.println("Thread Test");
+	    }
+}
