@@ -34,6 +34,7 @@
    * 可以实现排序（字典升序）和去重（compareTo方法）
 
    ```java
+   class Person2 implements Comparable{
    public int compareTo(Object o) {
      //根据自己制定的规则比较
      //根据年龄和姓名比较
@@ -48,6 +49,7 @@
      //再比较姓名
      return num == 0?name.compareTo(person2.name) : num;
    }
+   }
    ```
 
    * 比较器comparator：
@@ -56,6 +58,11 @@
      * 作为函数的参数，制定比较字符串长度规则
 
    ```java
+   //2.创建比较器对象
+   ComWithLength comWithLength = new ComWithLength();
+   //3.通过参数交给TreeSet
+   Set set = new TreeSet<>(comWithLength);
+   
    class ComWithLength implements Comparator{
    
    	public int compare(Object o1, Object o2) {
