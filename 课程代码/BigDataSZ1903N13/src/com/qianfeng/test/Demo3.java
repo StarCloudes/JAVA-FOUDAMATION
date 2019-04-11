@@ -11,7 +11,7 @@ public class Demo3 {
 		//1.判断：
 	    //判断是否包含一个子字符串
 		//boolean contains(CharSequence s) 
-		System.out.println(s1.contains("1000"));//false
+		System.out.println(s1.contains("1000"));//true
 	    //判断两个字符串的内容是否相同
 		//boolean equals(Object anObject) 
 		//String重写了这个方法,所以现在变成了判断内容
@@ -56,7 +56,7 @@ public class Demo3 {
 		System.out.println("arr4:"+Arrays.toString(arr4));
 		//将基本数据类型转换成字符串
 	    //String.valueOf()
-		 System.out.println(String.valueOf(true));
+		 System.out.println(String.valueOf(1) + 1);
 		
 	    //3.替换：
 		//String replace(char oldChar, char newChar) 

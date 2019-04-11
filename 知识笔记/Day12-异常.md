@@ -335,3 +335,34 @@ public class CharacterTest {
 }
 ```
 
+
+
+
+
+### 作业
+
+1. 模拟一个trim方法，去除字符串两端的空格
+
+```java
+public static void main(String[] args) 
+	{
+		String str="   abcd  efg   ";
+		String t=trim(str);
+		System.out.println(t);
+	}
+	public static String trim(String str)
+	{
+		int start=0;
+		int end=str.length()-1;
+		while (str.charAt(start)==' ')
+		{
+			start++;
+		}
+		while(str.charAt(end)==' ')
+		{
+			end--;
+		}
+		return str.substring(start,end+1);
+	}
+```
+

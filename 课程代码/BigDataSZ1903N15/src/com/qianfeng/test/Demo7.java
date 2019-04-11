@@ -40,7 +40,7 @@ public class Demo7 {
 		
 		//使用泛型后
 		while (iterator.hasNext()) {
-			String string = (String) iterator.next();
+			String string = iterator.next();
 			System.out.println(string);
 		}
 	}

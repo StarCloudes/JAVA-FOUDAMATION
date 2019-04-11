@@ -1,0 +1,33 @@
+
+
+2.写出以下程序可能的执行过程
+class MyThread extends Thread{
+	public void run()
+	{
+		try {
+			Thread.currentThread().sleep(3000);
+		} catch (InterruptedException e) {
+		}
+		System.out.println("MyThread running");
+	}
+}
+public class ThreadTest{
+
+	public static void main(String argv[])
+		{
+			MyThread t = new MyThread();
+			t.run();
+			t.start();
+			System.out.println("Thread Test");
+	    }
+}
+过程：1.MyThread t = new MyThread();
+2.t.run();   进入run的内部，先让主线程睡3000毫秒，由于当其的子线程还没有，所以，程序等待，什么都不做
+3.睡醒了，执行  System.out.println("MyThread running");
+4. t.start();在这里有了三个线程垃圾回收，主线程，t子线程，所以下面的处理要分情况
+
+可能情况4.1  继续执行主线程System.out.println("Thread Test");   
+	     然后主线程释放cpu，t线程抢到cpu后，开始运行，执行run方法  ，所以t线程先执行Thread.currentThread().sleep(3000);  睡3000毫秒
+	     继续执行System.out.println("MyThread running");
+        4.2  t线程抢到cpu，执行run方法  执行Thread.currentThread().sleep(3000);，分线程睡 30000毫秒   主线程抢到cpu，继续执行System.out.println("Thread Test"); 主线程执行完后，释放cpu  ，t线程睡醒后重新抢到cpu  ，执行System.out.println("MyThread running");
+

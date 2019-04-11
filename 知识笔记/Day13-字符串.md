@@ -8,6 +8,13 @@
 
    * 内存示意图（栈、堆、常量区）
    * 保存在常量区，一个字符串常量在常量区只允许储存一个
+
+   ```java
+   String s1 = new String(“hello”);
+   String s2 = “hello”;有什么区别？
+   //前者创建了2个或1个对象，后者创建了1个或0个对象。
+   ```
+
    * ⚠️注意字符串的比较
 
    ```java
@@ -23,6 +30,13 @@
    //String重写了equals的方法，重新制定了比较规则,变成了让s1与s3属性的地址比较
    System.out.println(s3.equals(s4));   //true
    System.out.println(s1.contains(s3));  //true
+   
+   String s5 = “hello”;    String s6 = “world”;   String s7 = “helloworld”;
+   
+   //字符串如果是变量相加，先开空间，再拼接。
+   //字符串如果是常量相加，是先加，然后到字符串常量池中找，如果有就直接返回，否则就创建。
+   S7 == s5 + s6 ; //fale      
+   s7 == “hello” + ”world”; //true
    ```
 
 3. String方法
@@ -103,7 +117,7 @@
    * 存储
 
      ```java
-     StringBuffer D de le te(boolean b)   //从最后插入
+     StringBuffer append(boolean b)   //从最后插入
      StringBuffer insert(int offset, boolean b)   //从指定位置插入
      ```
 
@@ -156,4 +170,65 @@
 
 1. 客户端与服务器
 2. 网址的构成
+
+
+
+
+
+### 作业
+
+1. 模拟一个trim方法，去除字符串两端的空格
+
+```java
+public static void main(String[] args) 
+  {
+    String str="   abcd  efg   ";
+    String t=trim(str);
+    System.out.println(t);
+  }
+  public static String trim(String str)
+  {
+    int start=0;
+    int end=str.length()-1;
+    while (str.charAt(start)==' ')
+    {
+      start++;
+    }
+    while(str.charAt(end)==' ')
+    {
+      end--;
+    }
+    return str.substring(start,end+1);
+  }
+```
+
+2. 反转字符串
+
+```java
+public String test1() {
+		String string = "hello world";
+		StringBuffer sBuffer = new StringBuffer(string);
+		for (int i = 0,j = sBuffer.length()-1; i < j; i++,j--) {
+			char a = sBuffer.charAt(i);
+			char b = sBuffer.charAt(j);
+			sBuffer.setCharAt(i, b);
+			sBuffer.setCharAt(j, a);
+		}
+		
+		String string2 = sBuffer.toString();
+		return string2;
+}
+	
+public String test2() {
+		String string = "hello world";
+		char[] arr = string.toCharArray();
+		for (int i = 0,j=arr.length-1; i < j; i++,j--) {
+			//这里是强转
+			arr[i] ^=  arr[j];
+			arr[j] = (char)(arr[i] ^ arr[j]);
+			arr[i] = (char)(arr[i] ^ arr[j]);
+		}
+		return new String(arr);
+}
+```
 

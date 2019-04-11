@@ -63,10 +63,10 @@ public class Demo7 {
 		//注意点
 		while (iterator.hasNext()) {
 			String value = (String)iterator.next();
-			System.out.println("value:"+value);
+			//System.out.println("value:"+value);
 			
 			//删除java
-			if (value.equals("iOS")) {
+			if (value.equals("java")) {
 				//在使用迭代器期间,使用list的删除方法直接删除元素,有可能发生错误,所以不要这样做
 				//list.remove("iOS");
 				//用迭代器提供的方法,注意:remove,add,set不要同时使用

@@ -35,6 +35,7 @@ public class Demo6 {
 		collection1.add("java");
 		collection1.add("html");
 		collection1.add("python");
+		collection1.add(1);
 		System.out.println(collection1);//重写了toString方法
 		Collection collection2 = new ArrayList<>();
 		collection2.add("iOS");

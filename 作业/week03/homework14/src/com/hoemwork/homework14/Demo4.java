@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
+//随机生成20个整数，范围为10-30，存入到集合中，将所有元素加和后输出。
 public class Demo4 {
 	public static void main(String[] args) {
 		
