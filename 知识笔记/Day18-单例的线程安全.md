@@ -164,7 +164,7 @@
 4. lock锁 
 
    * 应用场景：多生产者多消费者，提高notifyAll的效率
-   * 比较syncchronized和lock
+   * 比较syncchronized和lock![synchronized与Lock对比图](/Users/star/code练习/java/JAVA-FOUDAMATION/作业/week4/资料day18/synchronized与Lock对比图.png)
 
    ```java
    class BoundedBuffer {
@@ -232,7 +232,7 @@
 
 8. 线程状态图
 
-
+![线程状态图](/Users/star/code练习/java/JAVA-FOUDAMATION/作业/week4/资料day18/线程状态图.png)
 
 
 
@@ -248,7 +248,7 @@
 
    wait():使一个线程处于等待状态，并且释放所持有的对象的lock。
    sleep():使一个正在运行的线程处于睡眠状态，是一个静态方法，调用此方法要捕捉InterruptedException异常。
-    notify():唤醒一个处于等待状态的线程，注意的是在调用此方法的时候，并不能确切的唤醒某一个等待状态的线程，而是由JVM确定唤醒哪个线程，而且不是按优先级。
+   notify():唤醒一个处于等待状态的线程，注意的是在调用此方法的时候，并不能确切的唤醒某一个等待状态的线程，而是由JVM确定唤醒哪个线程，而且不是按优先级。
    notityAll():唤醒所有处入等待状态的线程，注意并不是给所有唤醒线程一个对象的锁，而是让它们竞争。
 
    

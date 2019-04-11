@@ -23,6 +23,7 @@ public class Demo1 {
 			String key =  iterator.next();
 			System.out.println("key: " + key +"      value: " + map.get(key));
 		}
+		System.out.println(map);
 //		for (String key : map.keySet()) {
 //			System.out.println("学号：" + key + "," + map.get(key));
 //		}

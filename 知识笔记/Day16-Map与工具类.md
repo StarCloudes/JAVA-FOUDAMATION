@@ -38,6 +38,10 @@
        Map.Entry<String,String> entry =        iterator2.next();
        System.out.println("key: " + entry.getKey()+ "  value:" + entry.getValue());
    }
+   
+   for(String user: map.keySet()) {
+   			System.out.println("UserName: "+user+"  Email Address: "+map.get(user));
+   		}
    ```
 
    * 介绍Map接口的方法
@@ -223,3 +227,82 @@
 1. 线程是工作的基本单元，真正工作的部分。多线程争抢cpu。
 2. 主线程（main）和垃圾回收线程（finalize）
 3. 线程与方法区
+
+
+
+
+
+### 作业
+
+1. 假如有以下email数据“aa@sohu.com,bb@163.com,cc@sina.com”现需要把email中的用户部分
+
+​         和邮件地址部分分离，分离后以键值对应的方式放入HashMap？
+
+```java
+String[] emails = new String[3];
+emails[0] = "aa@sohu.com";
+emails[1] = "bb@sohu.com";
+emails[2] = "cc@sohu.com";
+
+Map<String, String> map = new HashMap<String, String>();
+
+for(String email: emails) {			
+  map.put(email.split("@")[0],email.split("@")[1]);
+}
+
+for(String user: map.keySet()) {
+  System.out.println("UserName: "+user+"  Email Address: "+map.get(user));
+}
+```
+
+2. 有两个班级，一班和二班，每个班级有若干学生，包含学号和姓名信息，要求能够完全保存班级和学生信息，遍历输出。
+
+```java
+Map<String, Map<String, String>> map = new HashMap<>();
+
+Map<String, String> first = new HashMap<>();
+first.put("001", "小明");
+first.put("002", "李四");
+
+Map<String, String> second = new HashMap<>();
+second.put("001", "小张");
+second.put("002", "小红");
+
+map.put("01班级", first);
+map.put("02班级", second);
+
+for(String classname: map.keySet()) {
+  System.out.println(classname);
+  for(String num: map.get(classname).keySet()) {
+    System.out.println(num + ":" + map.get(classname).get(num));
+  }
+}
+```
+
+3. 有长度为5的字符串数组，数组中的每个元素均为一个标准英文句子，要求借助Map集合统计每个单词出现的次数。
+
+```java
+String[] text = new String[5];
+text[0] = "today is a good day";
+text[1] = "how are you";
+text[2] = "you are beautiful";
+text[3] = "good weather";
+text[4] = "day day up";
+
+Map<String, Integer> map = new HashMap<>();
+
+for(String line: text) {
+  for(String word : line.split(" ")) {
+    if(map.get(word) == null) {
+      map.put(word, 1);
+    }else {
+      map.put(word, map.get(word) + 1);
+    }
+  }
+}
+
+for(String word: map.keySet()) {
+  System.out.println("{word:" + word+ ", counts:" + map.get(word)+"}");
+}
+```
+

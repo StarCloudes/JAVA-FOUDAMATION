@@ -1,0 +1,85 @@
+1：取100个随机数，写入到本地文件中，加序号，每写一个换行。
+import java.io.*;
+import java.util.*;
+class lx1 
+{
+	public static void main(String[] args) throws IOException
+	{
+		FileWriter fw=new FileWriter("lx.txt");
+		BufferedWriter bw=new BufferedWriter(fw);
+		Random random=new Random();
+		//int arr[]=new int[100];
+		/*for (int i=0;i<100 ;i++ )
+		{
+			arr[i]=random.nextInt(1000);
+		}*/
+		for (int i=0;i<100 ;i++ )
+		{
+			bw.write(i+".."+random.nextInt(100));
+			bw.newLine();
+			bw.flush();
+		}
+		bw.close();
+		
+		
+		
+		
+	}
+}
+
+
+
+2：将java中所有的字符，写入本地文件，每100个一行。0-65535个
+import java.io.*;
+import java.util.*;
+class lx1 
+{
+	public static void main(String[] args) throws IOException
+	{
+		FileWriter fw=new FileWriter("lx.txt");
+		BufferedWriter bw=new BufferedWriter(fw);
+		for (int i=0;i<=65535 ; i++)
+		{
+			bw.write((char)i);
+			if(i%100==0)
+			bw.newLine();
+			bw.flush();
+	
+		}
+			bw.close();
+
+	}
+}
+
+
+
+3：将三个java文件的内容写入到一个文件中
+import java.io.*;
+
+class lx1 
+{
+	public static void main(String[] args) throws IOException
+	{
+		
+		BufferedReader br1=new BufferedReader(new FileReader("g1.txt"));
+		BufferedReader br2=new BufferedReader(new FileReader("g2.txt"));
+		BufferedReader br3=new BufferedReader(new FileReader("g3.txt"));
+		BufferedWriter bw=new BufferedWriter(new FileWriter("ll_copy.java"));
+		
+		BufferedReader[] str={br1,br2,br3};
+		for (int i=0;i<str.length ;i++ )
+		{	String line = null;
+
+		while((line = str[i].readLine())!=null)
+		{
+				bw.write(line);
+				bw.newLine();//写入换行
+				bw.flush();
+		}
+		}
+		br1.close();
+		br2.close();
+		br3.close();
+		bw.close();
+	}
+}
