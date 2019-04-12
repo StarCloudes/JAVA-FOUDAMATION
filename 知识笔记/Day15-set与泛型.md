@@ -84,7 +84,8 @@
    ComWithLength comWithLength = new ComWithLength();
    //3.通过参数交给TreeSet
    Set set = new TreeSet<>(comWithLength);
-   
+   //1.创建一个比较器
+   //按照字符串的长度比较
    class ComWithLength implements Comparator{
    
    	public int compare(Object o1, Object o2) {
@@ -100,6 +101,23 @@
    		
    		int num = s1.length()-s2.length();
    		return num==0?s1.compareTo(s2):num;
+   }
+   //自定义的比较规则,按照姓名和年龄比较
+   class ComWithPerson implements Comparator{
+   	
+   	public int compare(Object o1, Object o2) {
+   		if (!(o1 instanceof Person2)) {
+   			throw new ClassCastException("当前的对象不是Person2的对象");
+   		}
+   		if (!(o2 instanceof Person2)) {
+   			throw new ClassCastException("当前的对象不是Person2的对象");
+   		}
+   		//向下转型
+   		Person2 p1 = (Person2)o1;
+   		Person2 p2 = (Person2)o2;
+   		
+   		int num = p1.age-p2.age;
+   		return num==0?p1.name.compareTo(p2.name) : num;
    	}
    }
    ```

@@ -30,6 +30,7 @@ public class Demo6 {
 	   	  */
 			set.add("java");
 			set.add("iOS");
+			set.add("iiOS");
 			set.add("php");
 			set.add("python");
 			set.add("java");
@@ -40,7 +41,7 @@ public class Demo6 {
 
 			set1.add(new Person2("bingbing", 290));
 			set1.add(new Person2("chenchen", 20));
-			set1.add(new Person2("zhangsan", 290));
+			set1.add(new Person2("zhasan", 290));
 			set1.add(new Person2("chenchen", 20));
 		
 			System.out.println(set1);
