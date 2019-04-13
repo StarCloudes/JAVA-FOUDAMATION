@@ -69,9 +69,9 @@ class Product1{
 		
 		this.name = name;
 		this.price = price;
+		count++;
 		System.out.println(Thread.currentThread().getName()+"   生产了:"+this.name+"   产品的数量:"+this.count+"   价格:"+this.price);
 		
-		count++;
 		flag = ! flag;
 		//notify();//唤醒消费线程
 		notifyAll();
@@ -86,10 +86,11 @@ class Product1{
 				e.printStackTrace();
 			}
 		}
+		count--;
 		System.out.println(Thread.currentThread().getName()+"   消费了:"+this.name+"   产品的数量:"+this.count+"   价格:"+this.price);
 		//唤醒生产线程
 		flag = ! flag;
-		//notify();
+		//notify(); 
 		notifyAll();
 	}
 }

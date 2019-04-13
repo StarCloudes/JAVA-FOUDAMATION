@@ -33,6 +33,7 @@ public class Demo5 {
 			int chinese = Integer.parseInt(s.split(",")[3]);
 			set.add(new Student(name,math,english,chinese));
 		}
+		
 		Iterator iterator = set.iterator();
 		while (iterator.hasNext()) {
 			String str2 = (String) iterator.next();
@@ -70,4 +71,12 @@ class Student implements Comparable {
 		Student s = (Student) o;
 		return sum - s.sum == 0 ? 0 : (sum - s.sum);
 	}
+
+	@Override
+	public String toString() {
+		return "Student [name=" + name + ", math=" + math + ", english=" + english + ", chinese=" + chinese + ", sum="
+				+ sum + "]";
+	}
+	
+	
 }
