@@ -203,7 +203,7 @@
    list.add("java");
    //第一种排序:默认按照字典进行排序
    //注意:要想list中的元素可以按照字典排序,元素必须实现Comparable接口
-   Collections.sort(list);
+   Collections.sort(list); //排序只能作用于list
    System.out.println("字典排序:"+list);
    
    //第二种:按照从短到长排序
