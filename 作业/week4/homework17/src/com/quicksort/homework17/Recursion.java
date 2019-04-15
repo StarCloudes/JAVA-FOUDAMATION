@@ -15,7 +15,7 @@ package com.quicksort.homework17;
 public class Recursion {
 
 	public static void main(String[] args) {
-		System.out.println("和：" + sum(100));
+		System.out.println("和：" + sum(5));
 	}
 	
 //	如果n=1时，那么就返回1           sum（1） = 1

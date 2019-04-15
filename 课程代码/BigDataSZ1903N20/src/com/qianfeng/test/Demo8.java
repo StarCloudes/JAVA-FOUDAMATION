@@ -61,7 +61,7 @@ public class Demo8 {
 		System.out.println("***************************************");
 		
 		//获取指定目录下的文件或文件夹---1.不包含子文件夹  2.只得到了文件或文件夹的名字,没有全路径
-		File file8 = new File("D:\\workspace\\BigDataSZ1903N20");
+		File file8 = new File("/Users/star/code练习/java/JAVA-FOUDAMATION/课程代码/BigDataSZ1903N20");
 		String[] strings = file8.list();
 		for (String string : strings) {
 			System.out.println(string);
