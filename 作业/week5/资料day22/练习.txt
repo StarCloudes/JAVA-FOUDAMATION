@@ -1,0 +1,97 @@
+1.记录一个程序的使用次数，超过5次提示去注册
+import java.util.*;
+import java.io.*;
+class  zuoye1
+{
+	public static void main(String[] args)throws IOException
+	{
+		File file=new File("gg.properties");
+		if (!file.exists())
+		file.createNewFile();
+		FileInputStream fis=new FileInputStream(file);
+		Properties pro=new Properties();
+		pro.load(fis);
+
+	
+		int count=1;
+		String value=pro.getProperty("time");
+		if (value!=null)
+			count=Integer.parseInt(value);
+		if (count>5)
+		{
+			System.out.println("请注册");
+		}
+			count++;
+
+		pro.setProperty("time",count+"");
+		FileOutputStream fos=new FileOutputStream(file);
+
+		pro.store(fos,"hehe");
+
+		fis.close();
+		fos.close();
+		
+	}
+}
+
+
+
+2.有五个学生，每个学生有3门课的成绩，
+从键盘输入以上数据（包括姓名，三门课成绩），
+输入的格式：如：zhagnsan，30，40，60计算出总成绩，
+并把学生的信息和计算出的总分数高低顺序存放在磁盘文件"stud.txt"中。
+import java.io.*;
+import java.util.*;
+class zuoye1
+{
+	public static void main(String[] args)throws IOException
+	{
+		File file=new File("stud.txt");
+		if(!file.exists())
+			file.createNewFile();
+		BiJiao bj=new BiJiao();
+		
+		TreeSet<String> ts=new TreeSet<>(bj);
+	
+		
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		
+	for (int i=1;i<=5 ;i++ )
+	{
+		
+		String line=null;
+		System.out.println("请输入第"+i+"个学生的姓名和三门课的成绩");
+		line=br.readLine();
+		String ar=line;
+		String arr[]=new String[4];
+		arr=ar.split(",");
+		int sum=Integer.parseInt(arr[1])+Integer.parseInt(arr[2])+Integer.parseInt(arr[3]);
+		
+		ts.add(arr[0]+","+arr[1]+","+arr[2]+","+arr[3]+","+sum+"");
+	}
+	br.close();
+	FileWriter fw=new FileWriter(file);
+	Iterator<String> ite=ts.iterator();
+	while (ite.hasNext())
+	{
+		String ss=ite.next();
+		fw.write(ss);
+		fw.write("\r\n");
+		fw.flush();
+		
+	}
+	fw.close();
+	}
+}
+class BiJiao implements Comparator<String>
+{
+	public int compare(String s1,String s2)
+	{
+		String ss1[]=new String[5];
+		String ss2[]=new String[5];
+		ss1=s1.split(",");
+		ss2=s2.split(",");
+		return Integer.parseInt(ss1[4])-Integer.parseInt(ss2[4]);
+	}
+}
+
