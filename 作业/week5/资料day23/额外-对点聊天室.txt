@@ -1,0 +1,163 @@
+网络编程案例  对点聊天室
+
+         QQ和微信在现在已经成了人们无法离开的通信交流软件，它们方便了人们的交流和沟通。经过对Java的学习，结合多线程和UDP通信之后，聊天软件的神秘面纱就被揭开了，真正的聊天软件的核心其实就非常好理解了。
+
+         结合已经学习的内容，模仿编写一个聊天室，实现聊天室消息的发送和接收功能，并将接收的数据显示出来。。
+
+
+
+实现思路：
+
+（1）对于客户端，需要同时有发送数据包和接收数据包的功能，所以，必须使用一个主线程进行数据的发送功能，一个线程进行数据接收的功能。
+
+ （2）对于服务端，同客户端类似，需要同时兼有发送数据包和接收数据包的功能，同时，服务端还要实现向所有已经注册的用户发送它收到的信息，为了实现该功能，则客户端需要将自己的监听端口告诉服务端，同时服务端能够存储这些信息并向客户端广播消息。
+
+
+服务器端程序
+
+public class ChatServerDemo {
+
+	public static void main(String[] args) {
+		// 使用Set保存注册用户信息
+		Set<String> registerSet = new HashSet<>(); 
+		
+		byte[] buf = new byte[1024]; // 初始化数据数组
+		
+		// 不间断监听
+		DatagramSocket ds = null;
+		try {
+			ds = new DatagramSocket(9901);
+			while(true) {
+				// 初始化DatagramPacket对象
+				DatagramPacket dp = new DatagramPacket(buf, buf.length);
+				// 接收数据
+				ds.receive(dp);
+				// 处理客户端数据
+				String info = new String(dp.getData(), "UTF-8"); // 客户端数据
+				String portStr = info.substring(0, info.indexOf(":")); // 截取端口号
+				String hostName = dp.getAddress().getHostAddress(); // 组装host地址信息
+				String host = hostName + "-" + portStr + ":";
+				registerSet.add(host); // 将客户端注册到注册用户中去
+				System.out.println(host + info.substring(info.indexOf(":") + 1));
+				
+				// 循环广播数据
+				for(String hostInfo : registerSet) {
+					// 组装数据
+					String msg = host + info.substring(info.indexOf(":") + 1);
+					// 初始化DatagramPacket
+					DatagramPacket dpHost = new DatagramPacket(msg.getBytes(), msg.getBytes().length, 
+							InetAddress.getByName(hostInfo.substring(0, hostInfo.indexOf("-"))), 
+							Integer.parseInt(hostInfo.substring(hostInfo.indexOf("-") + 1, hostInfo.indexOf(":"))));
+					// 初始化DatagramSocket
+					DatagramSocket dsHost = new DatagramSocket();
+					// 广播数据发送
+					dsHost.send(dpHost);
+					// 关闭资源
+					dsHost.close();
+				}
+			}
+		} catch (SocketException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			// 关闭资源
+			if(null != ds) {
+				ds.close();
+			}
+		}
+		
+	}
+}
+
+
+
+客户端程序
+
+public class ChatClientDemo {
+
+	public static void main(String[] args) {
+		@SuppressWarnings("resource")
+		Scanner scan = new Scanner(System.in); // 用于获取Client监听的端口和发送的数据
+		
+		System.out.println("请输入监听端口：");
+		String portStr = scan.nextLine(); // 获取用户监听端口
+		int port = Integer.parseInt(portStr); // 转化成int类型值
+		
+		// 编写一个线程对象，异步接收服务器的广播数据
+		Runnable r = new Runnable() {
+			
+			@SuppressWarnings("resource")
+			@Override
+			public void run() {
+				byte[] buf = new byte[1024]; // 字节数据对象
+				// 初始化DatagramPacket对象
+				DatagramPacket dp = new DatagramPacket(buf, buf.length);
+				DatagramSocket ds = null;
+				try {
+					// 创建DatagramSocket对象
+					ds = new DatagramSocket(port);
+				} catch (SocketException e1) {
+					e1.printStackTrace();
+				}
+				// 循环监听数据
+				while(true) {
+					try {
+						// 监听并接收数据
+						ds.receive(dp);
+						// 打印数据
+						System.out.println(new String(dp.getData(), "UTF-8"));
+					} catch (SocketException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+		// 启动异步线程进行数据监听
+		Thread t = new Thread(r);
+		t.start();
+		
+		// 主线程进行数据发送
+		DatagramSocket ds = null;
+		try {
+			ds = new DatagramSocket();
+			while(true) {
+				// 获取用户输入数据
+				String line = scan.nextLine();
+				// 如果是非空数据，则发送消息。否则进行获取下一行输入
+				if(null != line) {
+					// 组装数据，数据格式是 ：   port:message形式
+					line = port + ":" + line;
+					// 创建数据包
+					DatagramPacket dp = new DatagramPacket(line.getBytes(), line.getBytes().length, 
+							InetAddress.getByName("localhost"), 9901);
+					// 发送数据包
+					try {
+						ds.send(dp);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				} else {
+					continue;
+				}
+			}
+		} catch (SocketException e) {
+			e.printStackTrace();
+		} catch (UnknownHostException e1) {
+			e1.printStackTrace();
+		} finally {
+			// 关闭数据流
+			if(null != ds) {
+				ds.close();
+			}
+		}
+		
+		
+	}
+}
+
+
+
+
