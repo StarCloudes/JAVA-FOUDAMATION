@@ -38,7 +38,7 @@ public class Demo {
 		//利用反射实现在不改变当前类的代码前提下,实现新增功能的添加
 		//先读取properties文件
 		Properties properties = new Properties();
-		properties.load(new FileReader("D:\\workspace\\BigDataSZ1903N23\\config.properties"));
+		properties.load(new FileReader("config.properties"));
 		//properties.size():键值对的个数
 		for (int i = 0; i < properties.size(); i++) {
 			String key = "usb"+i;
