@@ -1,0 +1,20 @@
+Mysql安装失败的解决办法
+  --------------------------------以下是错误的类型-----------------------------------  The security settings could not be applied to the database because the connection has failed with the following error. Error Nr.1045  Access denied for user ?root?@'localhost?(using password:YES)  If a personal firewall is running on your machine,please make sure you have opened the TCP port 3306 for connections.Otherwise no client application can connect to the server.After you have opened the port please press [Retry] to apply the security settings.  If you are re-installing after uou just uninstalled the MySQL server please note that the data directory was not removed automatically.Therefore the old password from your last installation is still needed to connect to the server.In this case please select skip now and re-run the Configuration Wizard from the start menu.
+ 解决：  开始第一行的密码不要写，应该是空的！然后输入新密码 
+ 1, 卸载MySQL 
+ 2, 删除目录 C:\Documents and Settings\All Users\Application Data\MySQL 
+3, 重新安装MySQL,如果不行，重启安装就 OK 啦
+ =================================  其他Mysql安装错误解决方法参考 ------------------------------------------  [MySQL] Could not start the service MySQL 解决方法  安装mysql 5.1.33,在运行Server Instance Configuration wizard时的Execute configurattion步骤
+中的第三项Start Service进出错,错误提示为Could not start the service MySQL (出现这种情况一般是因为装过mysql，卸载不干净造成的。卸载后重启后再重装。注意看下服务，如果未能卸载，可以用mysqld-nt -remove卸载)。 具体方法如下:  查看服务中有没有mysql,如果有将该服务停掉; 在控制面板中运行添加删除程序，将mysql卸载;  卸载后打开注册表，查看HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services 下的键值，如果有相关mysql键值(mysql、mysqladmin)则删掉，即可; 重启，将mysql的安装残余目录删掉 (查看服务，此时服务中已没有mysql);  重新安装mysql.安装后先不要运行Server Instance Configuration wizard，重启后在开始菜单中运行该向导，即可。 PS:一种值得参考的方法  --------------------------------------------- 
+ msyql安装到最后一步start service错误解决方法 
+1,到控制面板里面先把mysql删除. 
+ 2.到c盘C:\Program Files目录下把mysql目录删除. 
+3.如果在其他盘还有设置目录也要删除.空目录也要删除 
+4.到regedit把注册表  HKEY_LOCAL_MACHINE/SYSTEM/ControlSet001/Services/Eventlog/Applications/MySQL HKEY_LOCAL_MACHINE/SYSTEM/ControlSet002/Services/Eventlog/Applications/MySQL HKEY_LOCAL_MACHINE/SYSTEM/CurrentControlSet/Services/Eventlog/Applications/MySQL  有的话,全部删除！  （技巧：用F3循环查找“mysql”）
+ 5.如果任务管理器里有关mysql内容也删除 
+6,把防火墙关了  
+7,重新装mysql（这里我没有重启计算机）  重装时候有必要的话,重启计算机,停用IIS,和删除temp里的临时文件. 实在不行的话,配置mysql时候,把mysql服务换个服务名.  *******************************************************************************
+
+
+打开终端执行net start mysql时,出现用户权限问题?
+windows10-右击cmd.exe,可以以管理员的身份打开终端或者window键+s

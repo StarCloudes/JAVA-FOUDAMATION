@@ -30,6 +30,7 @@ public class Demo1 {
 				sd.getClass().getInterfaces(), handler2);
 		proxy2.login();
 		proxy2.regist();
+	
 	}
 
 }
