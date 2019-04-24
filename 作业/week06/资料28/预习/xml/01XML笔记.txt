@@ -1,0 +1,78 @@
+XML：eXtensible Markup Language 可扩展标记语言 version="1.0"
+  * 可扩展：所有的标签都是自定义的。  
+  * 功能：数据存储
+	* 配置文件:
+		作为配置文件存在，xml中主要配置的一些具有复杂的层级关系的数据，Properties文件中主要配置的一些key和value这样的数据。
+	* 数据传输--- 大部分使用json
+
+	json格式:{user:[{},{}],address:千峰}
+		
+  * html与xml区别：
+	* html语法松散，xml语法严格
+	* html做页面展示，xml做数据存储
+	* html所有标签都是预定义的，xml所有标签都是自定义的
+	
+  W3C:word wide web consortiem  万维网联盟
+  xml语法：
+
+	* 文档声明：
+	  * 必须写在xml文档的第一行。
+	  * 写法：<?xml version="1.0" ?>
+	  * 属性：	
+	    * version：版本号 固定值 1.0
+	    * encoding:指定文档的码表。默认值为 iso-8859-1
+	    * standalone：指定文档是否独立  yes 或 no
+
+        * 元素：xml文档中的标签
+	   ** 文档中必须有且只能有一个根元素
+	   * 元素需要正确闭合。<body></body> <br/>
+	   * 元素需要正确嵌套
+	   * 元素名称要遵守：
+	     * 元素名称区分大小写
+	     * 数字不能开头
+		
+	* 文本：
+	   * 转义字符：&gt;
+	   * CDATA: 里边的数据会原样显示
+	   *  <![CDATA[ 数据内容 ]]>
+				
+	* 属性：
+	   * 属性值必须用引号引起来。单双引号都行
+        * 注释：
+	  <!-- -->
+	* 处理指令：现在基本不用
+	  <?xml-stylesheet type="text/css" href="1.css"?>
+	
+
+        了解	
+	
+	xml约束： 
+                https://www.cnblogs.com/cb0327/p/4967782.html 
+	  * 约束就是xml的书写规则
+	  * 约束的分类：
+	  dtd(Document Type Definition)：
+	    dtd分类：
+	    * 内部dtd：在xml内部定义dtd
+	    * 外部dtd：在外部文件中定义dtd
+		* 本地dtd文件：<!DOCTYPE students SYSTEM  "student.dtd">
+		本地dtd文件的编写规则介绍:以student.dtd为例
+			1.<!ELEMENT students (student*) > 构成:<!ELEMENT  元素名(规则(正则表达式))>,students是根节点,括号中是父节点的直接子节点
+			2.举例:正则表达式中 (student*)表示根节点的直接子节点必须都是student,并且可以出现0次或多次
+			(name,age,sex) 表示student的元素是他们   (#PCDATA)表示当前节点是叶子节点
+			3.<!ATTLIST student number ID #REQUIRED>  !ATTLIST表示属性设置,number ID:表示每               		个student节点的ID号,必须是唯一的   #REQUIRED:表示ID号必须有
+			4.对应的xml中的设置:<!DOCTYPE students SYSTEM  "student.dtd">,将这个设置放在文档                        声明的下面,表示当前文档遵守dtd的约束 ; 每个student节点的属性中都要标明			ID号,如:number="s0001",且每个ID号都不一样.
+		* 网络dtd文件：<!DOCTYPE students PUBLIC "名称空间"  "student.dtd">
+		
+	  schema：
+	    导入xsd约束文档：
+	     1、编写根标签
+	     2、引入实例名称空间 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     3、引入名称空间 xsi:schemaLocation="http://www.itcast.cn/xml student.xsd"	
+	     4、引入默认的名称空间
+		
+	    例子:
+	    xmlns:xmlnamespace:xml的命名空间,命名空间标识是命名空间最重要的属性，重要到当输出一个命名空间时就直接转换为它的标识。标识有个规范的称呼:URI(统一资源定位符)。URI的最大特点是唯一性。如果不唯一就失去了辨识的意义。
+	    
+	    xmlns="http://www.qianfeng.cn/xml"
+	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    xsi:schemaLocation="http://www.qianfeng.cn/xml student.xsd"

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns="http://java.sun.com/xml/ns/javaee" 
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+		id="WebApp_ID" version="3.0">
+  <display-name>BigData1705W05Servlet</display-name>
+  <!-- web.xml是在程序开始执行的时候,首先被自动加载 -->
+  <!-- 完成对ServletDemo1的注册,相当于告诉服务器我要创建的对象所对应的类 -->
+  
+  <!-- 一个servlet标签相当于一个服务器的小应用(一个功能) -->
+  
+  <servlet>
+  	<servlet-name>servletDemo1</servlet-name>
+  	<servlet-class>com.qianfeng.servlet.ServletDemo1</servlet-class>
+  	
+  </servlet>
+  <servlet>
+  	<servlet-name>servletDemo2</servlet-name>
+  	<servlet-class>com.qianfeng.servlet.ServletDemo2</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>servletDemo3</servlet-name>
+  	<servlet-class>com.qianfeng.servlet.ServletDemo3</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>servletDemo4</servlet-name>
+    <servlet-class>com.qianfeng.servlet.ServletDemo4</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>servletDemo5</servlet-name>
+    <servlet-class>com.qianfeng.servlet.ServletDemo5</servlet-class>
+    
+    <!-- 在servlet内部设置的属性属于局部属性,通过config获取 -->
+    <init-param>
+    	<param-name>code</param-name>
+    	<param-value>ISO8859-1</param-value>
+    </init-param>
+  </servlet>
+  <!-- 在所有的servlet之外的叫全局变量 -->
+  <context-param>
+  	<param-name>code</param-name>
+  	<param-value>utf8</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>servletDemo6</servlet-name>
+    <servlet-class>com.qianfeng.servlet.ServletDemo6</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>servletDemo7</servlet-name>
+    <servlet-class>com.qianfeng.servlet.ServletDemo7</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Temp</servlet-name>
+    <servlet-class>com.qianfeng.servlet.Temp</servlet-class>
+  </servlet>
+
+
+
+
+
+
+  
+  <!-- 设置外部的访问路径
+ 路径匹配(路径设置的原则)
+ 1.写一个具体的名字匹配     前面必须加/
+ 2.*  任意路径匹配            	前面必须加/
+ 3.*.do  扩展名匹配    构成:*.名字       不需要在前面加/
+ 
+ 优先级:1>2>3
+ 如果是第二种:路径长的优先级高
+   -->
+  <servlet-mapping>
+  	<servlet-name>servletDemo1</servlet-name>
+  	<url-pattern>/demo1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>servletDemo2</servlet-name>
+  	<url-pattern>/demo2/*</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+  	<servlet-name>servletDemo3</servlet-name>
+  	<url-pattern>/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>servletDemo4</servlet-name>
+    <url-pattern>*.demo4</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>servletDemo5</servlet-name>
+    <url-pattern>/demo5</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>servletDemo6</servlet-name>
+    <url-pattern>/demo6</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>servletDemo7</servlet-name>
+    <url-pattern>/demo7</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Temp</servlet-name>
+    <url-pattern>/servlet/Temp</url-pattern>
+  </servlet-mapping>
+
+ 
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

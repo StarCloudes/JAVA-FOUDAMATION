@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>BigData1705W10_01Filter</display-name>
+  <!-- 注册过滤器 
+  
+        当存在多个过滤器时,我们要做的事情
+	* 关键点在与web.xml文件的配置
+	* 1.注册的顺序决定了过滤器被执行的顺序
+	* 2.要想在同一个链上,必须保证被他们过来的服务器的路径是一致的.
+  <filter>
+     <filter-name>filter1</filter-name>
+     <filter-class>com.qianfeng.filter.Filter1</filter-class>
+  </filter>
+  <filter>
+     <filter-name>filter2</filter-name>
+     <filter-class>com.qianfeng.filter.Filter2</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>filter1</filter-name>
+  	作用:设设置当前的过滤器可以过滤的servlet的范围   *代表全部 
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+   <filter-mapping>
+  	<filter-name>filter2</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  -->
+  <!-- 讲解访问路径的知识 -->
+ <!--   <filter>
+     <filter-name>filter3</filter-name>
+     <filter-class>com.qianfeng.filter.Filter3</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>filter3</filter-name>
+  	1.具体访问路径 
+  	<url-pattern>/ServletDemo1</url-pattern>
+  	
+  	2.采用的是*的方式
+  	 <url-pattern>/*</url-pattern> 
+  	 
+  	 3.通过指定具体的服务器的名字实现过滤 
+  	 <servlet-name>ServletDemo1</servlet-name>
+  	 4.根据扩展名实现过滤
+  	 <url-pattern>*.do</url-pattern>
+  </filter-mapping> -->
+  
+  <!-- 讲解请求转发,包含等情况下过滤器的使用 -->
+  <filter>
+     <filter-name>filter4</filter-name>
+     <filter-class>com.qianfeng.filter.Filter4</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>filter4</filter-name>
+  	<url-pattern>/*</url-pattern>
+  	<!--  设置dispatcher实现 请求转发 -->
+ <!--  	 
+  	 <dispatcher>REQUEST</dispatcher>执行的是从客户端到服务器的访问(默认值)
+  	 <dispatcher>FORWARD</dispatcher>执行的是从服务器到服务器的访问,request必须手动设置
+  	 
+  	 注意:如果是重定向的话,不需要单独设置dispatcher -->
+  </filter-mapping>
+  <!-- 注册servlet -->
+  <servlet>
+    <servlet-name>ServletDemo1</servlet-name>
+    <servlet-class>com.qianfeng.servlet.ServletDemo1</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServletDemo2</servlet-name>
+    <servlet-class>com.qianfeng.servlet.ServletDemo2</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServletDemo3</servlet-name>
+    <servlet-class>com.qianfeng.servlet.ServletDemo3</servlet-class>
+  </servlet>
+
+
+
+  <servlet-mapping>
+    <servlet-name>ServletDemo1</servlet-name>
+    <url-pattern>/ServletDemo1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletDemo2</servlet-name>
+    <url-pattern>/ServletDemo2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletDemo3</servlet-name>
+    <url-pattern>/ServletDemo3</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
